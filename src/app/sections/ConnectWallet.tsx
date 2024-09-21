@@ -22,8 +22,7 @@ const ConnectWallet = ({ renderButton }: Props) => {
   const { t } = useTranslation()
 
   const { connect, availableConnections, availableInstallations } = useWallet()
-  const { available } = useAuth()
-
+  const { available } = useAuth();
   const address = useAddress()
   if (address) return <Connected />
 
@@ -34,22 +33,22 @@ const ConnectWallet = ({ renderButton }: Props) => {
   )
 
   const list = [
-    ...availableConnections.map(({ type, identifier, name, icon }) => ({
-      src: icon,
-      children: name,
-      onClick: () => connect(type, identifier),
-    })),
-    {
-      icon: <UsbIcon />,
-      to: "/auth/ledger/device",
-      children: t("Access with ledger"),
-    },
-    ...availableInstallations.map(({ name, icon, url }) => ({
-      src: icon,
-      children: t(`Install ${name}`),
-      href: url,
-    })),
-  ]
+		...availableConnections.map(({ type, identifier, name, icon }) => ({
+			src: icon,
+			children: name,
+			onClick: () => connect(type, identifier),
+		})),
+		{
+			icon: <UsbIcon />,
+			to: "/auth/ledger/device",
+			children: t("Access with ledger"),
+		},
+		...availableInstallations.map(({ name, icon, url }) => ({
+			src: icon,
+			children: t(`Install ${name}`),
+			href: url,
+		})),
+  ];
 
   return (
     <ModalButton

@@ -10,9 +10,9 @@ import { useLCDClient } from "./lcdClient";
 export const useSupply = () => {
 	const { lcd } = useNetwork();
 
-	return useQuery(
-		[queryKey.bank.supply],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.bank.supply],
+		queryFn: async () => {
 			// FIXME: Import from terra.js
 			const { data } = await axios.get<{ supply: CoinData[] }>("cosmos/bank/v1beta1/supply", {
 				baseURL: lcd,
@@ -23,8 +23,8 @@ export const useSupply = () => {
 
 			return data.supply;
 		},
-		{ ...RefetchOptions.INFINITY }
-	);
+		...RefetchOptions.INFINITY,
+	});
 };
 
 // As a wallet app, native token balance is always required from the beginning.
@@ -35,9 +35,9 @@ export const useInitialBankBalance = () => {
 	const lcd = useLCDClient();
 	const isClassic = useIsClassic();
 
-	return useQuery(
-		[queryKey.bank.balance, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.bank.balance, address],
+		queryFn: async () => {
 			if (!address) return new Coins();
 			// TODO: Pagination
 			// Required when the number of results exceed 100
@@ -49,23 +49,23 @@ export const useInitialBankBalance = () => {
 			const [coins] = await lcd.bank.spendableBalances(address);
 			return coins;
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useBalances = () => {
 	const address = useAddress();
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.bank.balances, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.bank.balances, address],
+		queryFn: async () => {
 			if (!address) return new Coins();
 			const [coins] = await lcd.bank.balance(address);
 			return coins;
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useTerraNativeLength = () => {

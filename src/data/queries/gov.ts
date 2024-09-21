@@ -89,21 +89,27 @@ export enum ProposalStatus {
 
 export const useVotingParams = () => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.gov.votingParams], () => lcd.gov.votingParameters(), {
+	return useQuery({
+		queryKey: [queryKey.gov.votingParams],
+		queryFn: () => lcd.gov.votingParameters(),
 		...RefetchOptions.INFINITY,
 	});
 };
 
 export const useDepositParams = () => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.gov.depositParams], () => lcd.gov.depositParameters(), {
+	return useQuery({
+		queryKey: [queryKey.gov.depositParams],
+		queryFn: () => lcd.gov.depositParameters(),
 		...RefetchOptions.INFINITY,
 	});
 };
 
 export const useTallyParams = () => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.gov.tallyParams], () => lcd.gov.tallyParameters(), {
+	return useQuery({
+		queryKey: [queryKey.gov.tallyParams],
+		queryFn: () => lcd.gov.tallyParameters(),
 		...RefetchOptions.INFINITY,
 	});
 };
@@ -112,9 +118,9 @@ export const useTallyParams = () => {
 export const useProposals = (status: Proposal.Status) => {
 	const network = useNetwork();
 	const { lcd: lcdURL, name } = network;
-	return useQuery(
-		[queryKey.gov.proposals, status],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.gov.proposals, status],
+		queryFn: async () => {
 			let proposals;
 
 			if (name === "mainnet") {
@@ -140,12 +146,12 @@ export const useProposals = (status: Proposal.Status) => {
 										...prop.messages[0],
 										title: prop.title,
 										description: prop.summary,
-								  }
+									}
 							: {
 									"@type": "/cosmos.gov.v1.TextProposal",
 									title: prop.title,
 									description: prop.summary,
-							  },
+								},
 						final_tally_result: {
 							yes: prop.final_tally_result.yes_count,
 							abstain: prop.final_tally_result.abstain_count,
@@ -170,8 +176,8 @@ export const useProposals = (status: Proposal.Status) => {
 				return response.data?.proposals as ProposalResult[];
 			}
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useGetProposalStatusItem = () => {
@@ -207,7 +213,7 @@ export const useGetProposalStatusItem = () => {
 				label: "",
 				color: "danger" as Color,
 			},
-		}[status]);
+		})[status];
 };
 
 export const useProposalStatusItem = (status: Proposal.Status) => {
@@ -219,9 +225,9 @@ export const useProposalStatusItem = (status: Proposal.Status) => {
 export const useProposal = (id: number) => {
 	const network = useNetwork();
 	const { lcd: lcdURL, name } = network;
-	return useQuery(
-		[queryKey.gov.proposal, id],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.gov.proposal, id],
+		queryFn: async () => {
 			if (name === "mainnet") {
 				const response = await axios.get<{
 					pagination: any;
@@ -242,12 +248,12 @@ export const useProposal = (id: number) => {
 									...prop.messages[0],
 									title: prop.title,
 									description: prop.summary,
-							  }
+								}
 						: {
 								"@type": "/cosmos.gov.v1.TextProposal",
 								title: prop.title,
 								description: prop.summary,
-						  },
+							},
 					final_tally_result: {
 						yes: prop.final_tally_result.yes_count,
 						abstain: prop.final_tally_result.abstain_count,
@@ -266,28 +272,30 @@ export const useProposal = (id: number) => {
 				return response.data.proposal;
 			}
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 /* proposal: deposits */
 export const useDeposits = (id: number) => {
 	const lcd = useLCDClient();
-	return useQuery(
-		[queryKey.gov.deposits, id],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.gov.deposits, id],
+		queryFn: async () => {
 			// TODO: Pagination
 			// Required when the number of results exceed 100
 			const [deposits] = await lcd.gov.deposits(id);
 			return deposits;
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useTally = (id: number) => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.gov.tally, id], () => lcd.gov.tally(id), {
+	return useQuery({
+		queryKey: [queryKey.gov.tally, id],
+		queryFn: () => lcd.gov.tally(id),
 		...RefetchOptions.DEFAULT,
 	});
 };

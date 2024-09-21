@@ -87,5 +87,5 @@ export const useValidateTheme = () => {
 /* favicon */
 const setFavicon = (href: string) => {
   const favicon = document.getElementById("favicon") as HTMLLinkElement
-  favicon.href = href
+  if (favicon) favicon.href = href;
 }

@@ -61,20 +61,22 @@ export const useAnchorTotalDeposit = () => {
 	const earn = useAnchorEarn();
 	const address = useAddress();
 
-	return useQuery(
-		[queryKey.Anchor.TotalDeposit, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.Anchor.TotalDeposit, address],
+		queryFn: async () => {
 			if (!address) return "0";
 			const deposit = await earn.getTotalDeposit({ address, market });
 			return toAmount(deposit);
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useAnchorAPY = () => {
 	const earn = useAnchorEarn();
-	return useQuery([queryKey.Anchor.APY], () => earn.getAPY({ market }), {
+	return useQuery({
+		queryKey: [queryKey.Anchor.APY],
+		queryFn: () => earn.getAPY({ market }),
 		...RefetchOptions.INFINITY,
 	});
 };
@@ -83,15 +85,15 @@ export const useAnchorExchangeRate = () => {
 	const lcd = useLCDClient();
 	const addressProvider = useAddressProvider();
 
-	return useQuery(
-		[queryKey.Anchor.MarketEpochState],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.Anchor.MarketEpochState],
+		queryFn: async () => {
 			const { exchange_rate } = await queryMarketEpochState({ lcd, market })(addressProvider);
 
 			return exchange_rate;
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useAnchorGetMsgs = (rate: string) => {

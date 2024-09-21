@@ -14,9 +14,9 @@ import { useLCDClient } from "./lcdClient";
 export const useValidators = () => {
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.staking.validators],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.staking.validators],
+		queryFn: async () => {
 			// TODO: Pagination
 			// Required when the number of results exceed LAZY_LIMIT
 
@@ -37,26 +37,26 @@ export const useValidators = () => {
 
 			return uniqBy(path(["operator_address"]), [...v1, ...v2, ...v3]);
 		},
-		{ ...RefetchOptions.INFINITY }
-	);
+		...RefetchOptions.INFINITY,
+	});
 };
 
 export const useValidator = (operatorAddress: ValAddress) => {
 	const lcd = useLCDClient();
-	return useQuery(
-		[queryKey.staking.validator, operatorAddress],
-		() => lcd.staking.validator(operatorAddress),
-		{ ...RefetchOptions.INFINITY }
-	);
+	return useQuery({
+		queryKey: [queryKey.staking.validator, operatorAddress],
+		queryFn: () => lcd.staking.validator(operatorAddress),
+		...RefetchOptions.INFINITY,
+	});
 };
 
 export const useDelegations = () => {
 	const address = useAddress();
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.staking.delegations, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.staking.delegations, address],
+		queryFn: async () => {
 			if (!address) return [];
 			// TODO: Pagination
 			// Required when the number of results exceed LAZY_LIMIT
@@ -64,17 +64,17 @@ export const useDelegations = () => {
 
 			return delegations.filter(({ balance }) => has(balance.amount.toString()));
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useDelegation = (validatorAddress: ValAddress) => {
 	const address = useAddress();
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.staking.delegation, address, validatorAddress],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.staking.delegation, address, validatorAddress],
+		queryFn: async () => {
 			if (!address) return;
 			try {
 				const delegation = await lcd.staking.delegation(address, validatorAddress);
@@ -83,29 +83,31 @@ export const useDelegation = (validatorAddress: ValAddress) => {
 				return;
 			}
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useUnbondings = () => {
 	const address = useAddress();
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.staking.unbondings, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.staking.unbondings, address],
+		queryFn: async () => {
 			if (!address) return [];
 			// Pagination is not required because it is already limited
 			const [unbondings] = await lcd.staking.unbondingDelegations(address);
 			return unbondings;
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useStakingPool = () => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.staking.pool], () => lcd.staking.pool(), {
+	return useQuery({
+		queryKey: [queryKey.staking.pool],
+		queryFn: () => lcd.staking.pool(),
 		...RefetchOptions.INFINITY,
 	});
 };

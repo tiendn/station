@@ -72,5 +72,9 @@ export const queryTFMSwap = async (params: TFMSwapParams) => {
 };
 
 export const useTFMTokens = () => {
-	return useQuery("TFM Tokens", queryTFMTokens, { ...RefetchOptions.INFINITY });
+	return useQuery({
+		queryKey: ["TFM Tokens"],
+		queryFn: queryTFMTokens,
+		...RefetchOptions.INFINITY,
+	});
 };

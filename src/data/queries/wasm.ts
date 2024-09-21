@@ -8,7 +8,9 @@ import { useLCDClient } from "./lcdClient";
 /* contract info */
 export const useContractInfo = (address: TerraAddress) => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.wasm.contractInfo, address], () => lcd.wasm.contractInfo(address), {
+	return useQuery({
+		queryKey: [queryKey.wasm.contractInfo, address],
+		queryFn: () => lcd.wasm.contractInfo(address),
 		...RefetchOptions.INFINITY,
 		enabled: AccAddress.validate(address),
 	});
@@ -16,14 +18,15 @@ export const useContractInfo = (address: TerraAddress) => {
 
 export const useInitMsg = <T>(address: TerraAddress) => {
 	const lcd = useLCDClient();
-	return useQuery<T>(
-		[queryKey.wasm.contractInfo, "initMsg", address],
-		async () => {
+	return useQuery<T>({
+		queryKey: [queryKey.wasm.contractInfo, "initMsg", address],
+		queryFn: async () => {
 			const d = await lcd.wasm.contractInfo(address);
 			return d.init_msg;
 		},
-		{ ...RefetchOptions.INFINITY, enabled: AccAddress.validate(address) }
-	);
+		...RefetchOptions.INFINITY,
+		enabled: AccAddress.validate(address),
+	});
 };
 
 /* contract query */
@@ -58,9 +61,9 @@ export const useTokenInfoCW20 = (token: TerraAddress, enabled = true) => {
 export const useTokenInfoCW721 = (contract: AccAddress, token_id: string) => {
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.wasm.contractQuery, contract, token_id],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.wasm.contractQuery, contract, token_id],
+		queryFn: async () => {
 			const data = await lcd.wasm.contractQuery<NFTTokenItem>(contract, {
 				nft_info: { token_id },
 			});
@@ -76,8 +79,8 @@ export const useTokenInfoCW721 = (contract: AccAddress, token_id: string) => {
 				return data;
 			}
 		},
-		{ ...RefetchOptions.INFINITY }
-	);
+		...RefetchOptions.INFINITY,
+	});
 };
 
 /* token balance */
@@ -108,7 +111,9 @@ export const useTokenBalance = (token: AccAddress) => {
 
 export const useTokenBalances = (tokens: AccAddress[]) => {
 	const getQuery = useGetTokenBalanceQuery();
-	return useQueries(tokens.map(getQuery));
+	return useQueries({
+		queries: (tokens || []).map(getQuery),
+	});
 };
 
 export const useCW721Tokens = (contract: AccAddress) => {

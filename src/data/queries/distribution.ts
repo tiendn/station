@@ -12,20 +12,22 @@ export const useRewards = () => {
 	const address = useAddress();
 	const lcd = useLCDClient();
 
-	return useQuery(
-		[queryKey.distribution.rewards, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.distribution.rewards, address],
+		queryFn: async () => {
 			if (!address) return { total: new Coins(), rewards: {} };
 			return await lcd.distribution.rewards(address);
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useCommunityPool = () => {
 	const lcd = useLCDClient();
 
-	return useQuery([queryKey.distribution.communityPool], () => lcd.distribution.communityPool(), {
+	return useQuery({
+		queryKey: [queryKey.distribution.communityPool],
+		queryFn: () => lcd.distribution.communityPool(),
 		...RefetchOptions.INFINITY,
 	});
 };
@@ -35,29 +37,29 @@ export const useValidatorCommission = () => {
 	const lcd = useLCDClient();
 	const address = useAddress();
 
-	return useQuery(
-		[queryKey.distribution.validatorCommission],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.distribution.validatorCommission],
+		queryFn: async () => {
 			if (!address) return new Coins();
 			const validatorAddress = ValAddress.fromAccAddress(address);
 			return await lcd.distribution.validatorCommission(validatorAddress);
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useWithdrawAddress = () => {
 	const lcd = useLCDClient();
 	const address = useAddress();
 
-	return useQuery(
-		[queryKey.distribution.withdrawAddress],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.distribution.withdrawAddress],
+		queryFn: async () => {
 			if (!address) return;
 			return await lcd.distribution.withdrawAddress(address);
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 /* hooks */

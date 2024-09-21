@@ -10,9 +10,9 @@ export const useActiveDenoms = () => {
 	const lcd = useLCDClient();
 	const isClassic = useIsClassic();
 
-	return useQuery(
-		[queryKey.oracle.activeDenoms, isClassic],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.oracle.activeDenoms, isClassic],
+		queryFn: async () => {
 			if (isClassic) {
 				const activeDenoms = await lcd.oracle.activeDenoms();
 				return sortDenoms(["uluna", ...activeDenoms]);
@@ -20,34 +20,34 @@ export const useActiveDenoms = () => {
 				return ["uluna"];
 			}
 		},
-		{ ...RefetchOptions.INFINITY }
-	);
+		...RefetchOptions.INFINITY,
+	});
 };
 
 export const useExchangeRates = () => {
 	const lcd = useLCDClient();
 	const isClassic = useIsClassic();
 
-	return useQuery(
-		[queryKey.oracle.exchangeRates, isClassic],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.oracle.exchangeRates, isClassic],
+		queryFn: async () => {
 			if (isClassic) return await lcd.oracle.exchangeRates();
 		},
-		{ ...RefetchOptions.DEFAULT }
-	);
+		...RefetchOptions.DEFAULT,
+	});
 };
 
 export const useOracleParams = () => {
 	const lcd = useLCDClient();
 	const isClassic = useIsClassic();
 
-	return useQuery(
-		[queryKey.oracle.params, isClassic],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.oracle.params, isClassic],
+		queryFn: async () => {
 			if (isClassic) return await lcd.oracle.parameters();
 		},
-		{ ...RefetchOptions.INFINITY }
-	);
+		...RefetchOptions.INFINITY,
+	});
 };
 
 /* helpers */

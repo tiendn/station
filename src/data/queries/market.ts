@@ -4,7 +4,9 @@ import { useLCDClient } from "./lcdClient";
 
 export const useMarketParams = () => {
 	const lcd = useLCDClient();
-	return useQuery([queryKey.market.params], () => lcd.market.parameters(), {
+	return useQuery({
+		queryKey: [queryKey.market.params],
+		queryFn: () => lcd.market.parameters(),
 		...RefetchOptions.INFINITY,
 	});
 };

@@ -15,9 +15,9 @@ export const useTnsAddress = (name: string) => {
 	const lcd = useLCDClient();
 	const { data: contracts } = useTerraContracts();
 
-	return useQuery(
-		[queryKey.TNS, name],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.TNS, name],
+		queryFn: async () => {
 			if (!contracts) return;
 
 			const { tnsRegistry: registry } = contracts;
@@ -44,8 +44,9 @@ export const useTnsAddress = (name: string) => {
 
 			return address;
 		},
-		{ ...RefetchOptions.INFINITY, enabled: name.endsWith(".ust") }
-	);
+		...RefetchOptions.INFINITY,
+		enabled: name.endsWith(".ust"),
+	});
 };
 
 /**
@@ -58,9 +59,9 @@ export const useTnsName = (address: string) => {
 	const lcd = useLCDClient();
 	const { data: contracts } = useTerraContracts();
 
-	return useQuery(
-		[queryKey.TNS, address],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.TNS, address],
+		queryFn: async () => {
 			if (!contracts || !address) return;
 
 			const { tnsReverseRecord: reverseRecord } = contracts;
@@ -73,8 +74,9 @@ export const useTnsName = (address: string) => {
 
 			return name;
 		},
-		{ ...RefetchOptions.INFINITY, enabled: Boolean(contracts) }
-	);
+		...RefetchOptions.INFINITY,
+		enabled: Boolean(contracts),
+	});
 };
 
 /**

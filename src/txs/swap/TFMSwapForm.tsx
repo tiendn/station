@@ -115,16 +115,16 @@ const TFMSwapForm = () => {
 	const params = { ...assets, amount, slippage };
 
 	/* simulate */
-	const { data: simulationResults, isFetching } = useQuery(
-		["TFM.simulate.swap", params],
-		async () => {
+	const { data: simulationResults, isFetching } = useQuery({
+		queryKey: ["TFM.simulate.swap", params],
+		queryFn: async () => {
 			if (!validateParams(params)) throw new Error();
 			const route = await queryTFMRoute(toTFMParams(params));
 			const swap = await queryTFMSwap(toTFMParams(params));
 			return [route, swap] as const;
 		},
-		{ enabled: validateParams(params) }
-	);
+		enabled: validateParams(params),
+	});
 
 	const simulatedValue = useMemo(() => {
 		if (!(simulationResults && askDecimals)) return;
@@ -181,11 +181,14 @@ const TFMSwapForm = () => {
 	}, [address, offerAsset, simulationResults]);
 
 	/* fee */
-	const { data: estimationTxValues } = useQuery(["estimationTxValues", { assets }], async () => {
-		if (!validateAssets(assets)) return;
-		const { offerAsset, askAsset } = assets;
-		// estimate fee only after ratio simulated
-		return { offerAsset, askAsset, input, slippageInput: 1 };
+	const { data: estimationTxValues } = useQuery({
+		queryKey: ["estimationTxValues", { assets }],
+		queryFn: async () => {
+			if (!validateAssets(assets)) return;
+			const { offerAsset, askAsset } = assets;
+			// estimate fee only after ratio simulated
+			return { offerAsset, askAsset, input, slippageInput: 1 };
+		},
 	});
 
 	const token = offerAsset;

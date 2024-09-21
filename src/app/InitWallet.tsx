@@ -9,13 +9,11 @@ import Online from "./containers/Online";
 import WithNodeInfo from "./WithNodeInfo";
 import { useTheme } from "../data/settings/Theme";
 
-const queryClient = new QueryClient()
-
 const InitWallet = ({ children }: PropsWithChildren<{}>) => {
 	useOnNetworkChange();
 	const { name } = useTheme();
 	const { status } = useWallet();
-	// const queryClient = useQueryClient();
+	const queryClient = useQueryClient();
 	const networkName = useNetworkName();
 
 	useLayoutEffect(() => {

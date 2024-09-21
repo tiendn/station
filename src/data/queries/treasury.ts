@@ -5,14 +5,15 @@ import { useLCDClient } from "./lcdClient";
 
 export const useTaxRate = (disabled = false) => {
 	const lcd = useLCDClient();
-	return useQuery(
-		[queryKey.treasury.taxRate],
-		async () => {
+	return useQuery({
+		queryKey: [queryKey.treasury.taxRate],
+		queryFn: async () => {
 			const taxRate = await lcd.treasury.taxRate();
 			return taxRate.toString() || "0";
 		},
-		{ ...RefetchOptions.INFINITY, enabled: !disabled }
-	);
+		...RefetchOptions.INFINITY,
+		enabled: !disabled,
+	});
 };
 
 const useGetQueryTaxCap = (disabled = false) => {
@@ -44,7 +45,9 @@ export const useTaxCap = (denom?: Denom) => {
 
 export const useTaxCaps = (denoms: Denom[], disabled = false) => {
 	const getQueryTaxCap = useGetQueryTaxCap(disabled);
-	return useQueries(denoms.map(getQueryTaxCap));
+	return useQueries({
+		queries: (denoms || []).map(getQueryTaxCap),
+	});
 };
 
 export const isNativeToken = (token?: Token) => isDenomLuna(token) || isDenomTerra(token);

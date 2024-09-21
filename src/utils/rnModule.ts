@@ -172,58 +172,53 @@ export const WebViewMessage = async <T extends RN_API>(
   data?: RN_API_REQ_TYPES[T]
 ): Promise<unknown> =>
   new Promise((resolve, reject) => {
-    if (!is.mobileNative()) {
-      reject("There is no ReactNativeWebView")
-      return
-    }
+		// if (!is.mobileNative()) {
+		//   reject("There is no ReactNativeWebView")
+		//   return
+		// }
 
-    const reqId = Date.now()
-    // const TIMEOUT = 100000
-    //
-    // const timer = setTimeout(() => {
-    //   /** android */
-    //   document.removeEventListener("message", listener)
-    //   /** ios */
-    //   window.removeEventListener("message", listener)
-    //   reject("TIMEOUT")
-    // }, TIMEOUT)
+		const reqId = Date.now();
+		// const TIMEOUT = 100000
+		//
+		// const timer = setTimeout(() => {
+		//   /** android */
+		//   document.removeEventListener("message", listener)
+		//   /** ios */
+		//   window.removeEventListener("message", listener)
+		//   reject("TIMEOUT")
+		// }, TIMEOUT)
 
-    const listener = (event: any) => {
-      if (event?.data.includes("setImmediate$0")) return
+		const listener = (event: any) => {
+			if (event?.data.includes("setImmediate$0")) return;
 
-      if (event?.data) {
-        const { data: listenerData, reqId: listenerReqId } = JSON.parse(
-          event.data
-        )
+			if (event?.data) {
+				const { data: listenerData, reqId: listenerReqId } = JSON.parse(event.data);
 
-        // @ts-ignore
-        if (
-          typeof listenerData === "string" &&
-          listenerData?.includes("Error")
-        ) {
-          toast.error(listenerData, { toastId: "rn-error" })
-        }
+				// @ts-ignore
+				if (typeof listenerData === "string" && listenerData?.includes("Error")) {
+					toast.error(listenerData, { toastId: "rn-error" });
+				}
 
-        if (listenerReqId === reqId) {
-          // clearTimeout(timer)
-          /** android */
-          document.removeEventListener("message", listener)
-          /** ios */
-          window.removeEventListener("message", listener)
+				if (listenerReqId === reqId) {
+					// clearTimeout(timer)
+					/** android */
+					document.removeEventListener("message", listener);
+					/** ios */
+					window.removeEventListener("message", listener);
 
-          resolve(listenerData)
-        }
-      }
-    }
-    window.ReactNativeWebView.postMessage(
-      JSON.stringify({
-        type,
-        data,
-        reqId,
-      })
-    )
-    /** android */
-    document.addEventListener("message", listener)
-    /** ios */
-    window.addEventListener("message", listener)
+					resolve(listenerData);
+				}
+			}
+		};
+		window.ReactNativeWebView?.postMessage(
+			JSON.stringify({
+				type,
+				data,
+				reqId,
+			})
+		);
+		/** android */
+		document.addEventListener("message", listener);
+		/** ios */
+		window.addEventListener("message", listener);
   })

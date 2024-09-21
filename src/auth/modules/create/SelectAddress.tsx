@@ -14,6 +14,7 @@ import { Tag } from "components/display";
 import AuthButton from "../../components/AuthButton";
 import { useCreateWallet } from "./CreateWalletWizard";
 import styles from "./SelectAddress.module.scss";
+import { useEffect, useRef } from "react";
 
 const SelectAddress = () => {
 	const { t } = useTranslation();
@@ -23,9 +24,9 @@ const SelectAddress = () => {
 	const { mnemonic, index } = values;
 
 	/* query */
-	const { data: results } = useQuery(
-		["mnemonic", mnemonic, index],
-		async () => {
+	const { data: results } = useQuery({
+		queryKey: ["mnemonic", mnemonic, index],
+		queryFn: async () => {
 			const results = await Promise.allSettled(
 				([118, 330] as const).map(async (bip) => {
 					const mk = new MnemonicKey({ mnemonic, coinType: bip, index });
@@ -42,17 +43,23 @@ const SelectAddress = () => {
 				return result.value;
 			});
 		},
-		{
-			onSuccess: (results) => {
-				const account118 = results.find(({ bip }) => bip === 118);
-				if (!account118) return;
-				const { balance, delegations, unbondings } = account118;
-				const is118Empty =
-					!balance.toData().length && !delegations.length && !unbondings.length;
-				if (is118Empty) createWallet(330, index);
-			},
+	});
+
+	// Ref to store previous results
+	const prevResultsRef = useRef(null);
+
+	useEffect(() => {
+		if (results && results !== prevResultsRef.current) {
+			prevResultsRef.current = results;
+
+			const account118 = results.find(({ bip }) => bip === 118);
+			if (!account118) return;
+			const { balance, delegations, unbondings } = account118;
+			const is118Empty =
+				!balance.toData().length && !delegations.length && !unbondings.length;
+			if (is118Empty) createWallet(330, index);
 		}
-	);
+	}, [results, createWallet, index]);
 
 	/* form */
 	const form = useForm<{ bip?: Bip }>();

@@ -153,9 +153,12 @@ export const useAccount = () => {
 	const address = useAddress();
 	const lcd = useLCDClient();
 
-	return useQuery(["accounts", address], async () => {
-		if (!address) return null;
-		return await queryAccounts(address, lcd.config.URL);
+	return useQuery({
+		queryKey: ["accounts", address],
+		queryFn: async () => {
+			if (!address) return null;
+			return await queryAccounts(address, lcd.config.URL);
+		},
 	});
 };
 

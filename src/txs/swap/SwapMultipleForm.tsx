@@ -94,9 +94,9 @@ const SwapMultipleForm = () => {
 	);
 
 	/* simulate */
-	const { data: simulated = [], isFetching: isSimulating } = useQuery(
-		["simulate.swap.multiple", simulatable, askAsset],
-		async () => {
+	const { data: simulated = [], isFetching: isSimulating } = useQuery({
+		queryKey: ["simulate.swap.multiple", simulatable, askAsset],
+		queryFn: async () => {
 			const simulated = await Promise.allSettled(
 				simulatable.map(async ({ token: offerAsset, max: amount, tax }) => {
 					const mode = getSwapMode({ offerAsset, askAsset });
@@ -116,8 +116,8 @@ const SwapMultipleForm = () => {
 				if (result.status === "rejected") throw new Error(result.reason);
 				return result.value;
 			});
-		}
-	);
+		},
+	});
 
 	/* select denoms */
 	const selectable = useMemo(() => simulated.filter(({ value }) => has(value)), [simulated]);

@@ -132,8 +132,12 @@ const SwapForm = () => {
 	/* simulate */
 	const { data: simulationResults, isFetching } = useQuery({
 		...simulateQuery,
-		onSuccess: ({ profitable }) => setValue("mode", profitable?.mode),
 	});
+
+	useEffect(() => {
+		const { profitable } = simulationResults;
+		setValue("mode", profitable?.mode);
+	}, [simulationResults]);
 
 	/* Simulated value to create tx */
 	// Simulated for all possible modes
@@ -201,9 +205,9 @@ const SwapForm = () => {
 	);
 
 	/* fee */
-	const { data: estimationTxValues } = useQuery(
-		["estimationTxValues", { mode, assets, balance }],
-		async () => {
+	const { data: estimationTxValues } = useQuery({
+		queryKey: ["estimationTxValues", { mode, assets, balance }],
+		queryFn: async () => {
 			if (!(mode && validateAssets(assets) && balance)) return;
 			const { offerAsset, askAsset } = assets;
 			const simulate = getSimulateFunction(mode);
@@ -211,8 +215,8 @@ const SwapForm = () => {
 			const { ratio } = await simulate({ ...assets, amount: balance });
 			const input = toInput(balance, findDecimals(offerAsset));
 			return { mode, offerAsset, askAsset, ratio, input, slippageInput: 1 };
-		}
-	);
+		},
+	});
 
 	const taxRequired = mode !== SwapMode.ONCHAIN;
 	const token = offerAsset;

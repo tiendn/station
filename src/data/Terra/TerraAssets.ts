@@ -11,14 +11,14 @@ import { useNetworkName } from "../wallet";
 const config = { baseURL: ASSETS };
 
 export const useTerraAssets = <T>(path: string, callback?: (data: T) => T) => {
-	return useQuery<T, AxiosError>(
-		[queryKey.TerraAssets, path],
-		async () => {
+	return useQuery<T, AxiosError>({
+		queryKey: [queryKey.TerraAssets, path],
+		queryFn: async () => {
 			const { data } = await axios.get<T>(path, config);
 			return callback?.(data) ?? data;
 		},
-		{ ...RefetchOptions.INFINITY }
-	);
+		...RefetchOptions.INFINITY,
+	});
 };
 
 export const useTerraAssetsByNetwork = <T>(
@@ -28,15 +28,16 @@ export const useTerraAssetsByNetwork = <T>(
 ) => {
 	const networkName = useNetworkName();
 
-	return useQuery<T | undefined, AxiosError>(
-		[queryKey.TerraAssets, path, networkName],
-		async () => {
+	return useQuery<T | undefined, AxiosError>({
+		queryKey: [queryKey.TerraAssets, path, networkName],
+		queryFn: async () => {
 			const { data } = await axios.get<Record<NetworkName, T>>(path, config);
 			if (!data[networkName]) return {} as T;
 			return callback?.(data[networkName]) ?? data[networkName];
 		},
-		{ ...RefetchOptions.INFINITY, enabled: !disabled }
-	);
+		...RefetchOptions.INFINITY,
+		enabled: !disabled,
+	});
 };
 
 export const useIBCWhitelist = () => {
