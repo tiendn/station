@@ -1,0 +1,21 @@
+@import "../styles/mixins";
+
+.gas {
+  @include flex(flex-start);
+  gap: 8px;
+}
+
+.select {
+  background: transparent;
+  @include mobile {
+    max-width: 80px;
+  }
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.hidden {
+  visibility: hidden;
+}
