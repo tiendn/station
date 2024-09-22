@@ -7,6 +7,9 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"cracoConfig": "craco.config.js",
+	"engines": {
+		"node": "18.18.x"
+	},
 	"dependencies": {
 		"@anchor-protocol/anchor.js": "^5.1.1",
 		"@ledgerhq/hw-transport-web-ble": "^6.29.3",
