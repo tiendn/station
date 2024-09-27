@@ -3,6 +3,13 @@
 	"description": "A web application to interact with Terra Core.",
 	"homepage": "https://station.money",
 	"author": "Terra <engineering@terra.money> (https://station.money)",
+	"maintainers": [
+		{
+			"name": "OrbitLabs",
+			"email": "orbitlabs.work@proton.me",
+			"url": "https://orbitlabs.space"
+		}
+	],
 	"repository": "github:terra-money/station",
 	"version": "1.0.0",
 	"license": "MIT",
