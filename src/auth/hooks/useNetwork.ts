@@ -44,11 +44,13 @@ export const useNetworkOptions = () => {
 
 export const useNetwork = (): CustomNetwork => {
   const networks = useNetworks()
-  const network = useRecoilValue(networkState)
-  const wallet = useWallet()
+  const network = useRecoilValue(networkState);
+  const wallet = useWallet();
 
-  if (sandbox) return networks[network] ?? networks.mainnet
-  return wallet.network[networks[network].chainID] as any
+  if (sandbox) return networks[network] ?? networks.mainnet;
+  // FIX: For version @terra-money/wallet-provider@4.0.1
+  // return wallet.network[networks[network].chainID] as any
+  return wallet.network;
 }
 
 export const useNetworkName = () => {

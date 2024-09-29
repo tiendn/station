@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import styles from "./Checkbox.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean

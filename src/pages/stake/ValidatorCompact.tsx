@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import LaptopOutlinedIcon from "@mui/icons-material/LaptopOutlined"
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined"
 import { TERRA_VALIDATORS } from "config/constants"
@@ -15,7 +15,7 @@ import useAddressParams from "./useAddressParams"
 import styles from "./ValidatorCompact.module.scss"
 import { isWallet } from "auth"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const ValidatorCompact = ({ vertical }: { vertical?: boolean }) => {
   const { t } = useTranslation()

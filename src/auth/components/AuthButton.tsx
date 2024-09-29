@@ -1,9 +1,9 @@
 import { ButtonHTMLAttributes } from "react"
 import { Link, LinkProps } from "react-router-dom"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import styles from "./AuthButton.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface ButtonAttrs extends ButtonHTMLAttributes<HTMLButtonElement> {
   active: boolean

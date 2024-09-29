@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { groupBy } from "ramda"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import useInterval from "utils/hooks/useInterval"
 import { useCW721Whitelist } from "data/Terra/TerraAssets"
 import { Flex } from "components/layout"
 import styles from "./NFTPlaceholder.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const TOTAL = 3
 const DELAY = 3000 // null to stop animation

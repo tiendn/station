@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { useForm } from "react-hook-form"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { MsgVote, Vote } from "@terra-money/terra.js";
 import { useAddress } from "data/wallet"
 import { useBankBalance } from "data/queries/bank"
@@ -11,7 +11,7 @@ import useProposalId from "pages/gov/useProposalId"
 import Tx, { getInitialGasDenom } from "../Tx"
 import styles from "./VoteForm.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface TxValues {
   option: Vote.Option

@@ -10,15 +10,16 @@ import {
   useRef,
 } from "react"
 import classNames from "classnames"
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
-import styles from "./Select.module.scss"
-import { isWallet } from "auth"
-import { Grid, Flex } from "components/layout"
-import { RadioGroup } from "components/form"
-import { ModalButton, ModalRef, Mode } from "components/feedback"
-import { WithTokenItem } from "../../data/token"
+import classNamesBind from "classnames/bind";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import styles from "./Select.module.scss";
+import { isWallet } from "auth";
+import { Grid, Flex } from "components/layout";
+import { RadioGroup } from "components/form";
+import { ModalButton, ModalRef, Mode } from "components/feedback";
+import { WithTokenItem } from "../../data/token";
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   small?: boolean
@@ -71,50 +72,47 @@ const Select = forwardRef(
     }, [attrs.value, mobileList, currentValue])
 
     return isWallet.mobile() ? (
-      <ModalButton
-        ref={selectorRef}
-        modalType={Mode.SELECT}
-        renderButton={(open) => (
-          <div
-            className={classNames(styles.wrapper, attrs.className)}
-            onClick={open}
-          >
-            <div className={className}>
-              <Flex gap={4} className={styles.flex}>
-                <div className={styles.label}>
-                  {isToken && currentValue ? (
-                    <WithTokenItem token={currentValue as string}>
-                      {({ symbol }) => symbol}
-                    </WithTokenItem>
-                  ) : (
-                    `${selectedValue}`
-                  )}
-                </div>
-                <ArrowDropDownIcon style={{ fontSize: 18 }} />
-              </Flex>
-            </div>
-          </div>
-        )}
-      >
-        <Grid gap={20}>
-          <RadioGroup
-            options={mobileList}
-            value={(attrs.value as any) ?? currentValue}
-            onChange={(value) => {
-              // @ts-ignore
-              handleChange && handleChange(value)
-              selectorRef.current?.close()
-            }}
-            mobileModal={true}
-          />
-        </Grid>
-      </ModalButton>
-    ) : (
-      <div className={classNames(styles.wrapper, attrs.className)}>
-        <select {...attrs} className={className} ref={ref} />
-        <ArrowDropDownIcon style={{ fontSize: 18 }} className={styles.caret} />
-      </div>
-    )
+		<ModalButton
+			ref={selectorRef}
+			modalType={Mode.SELECT}
+			renderButton={(open) => (
+				<div className={classNames(styles.wrapper, attrs.className)} onClick={open}>
+					<div className={className}>
+						<Flex gap={4} className={styles.flex}>
+							<div className={styles.label}>
+								{isToken && currentValue ? (
+									<WithTokenItem token={currentValue as string}>
+										{({ symbol }) => symbol}
+									</WithTokenItem>
+								) : (
+									`${selectedValue}`
+								)}
+							</div>
+							<ArrowDropDownIcon style={{ fontSize: 18 }} />
+						</Flex>
+					</div>
+				</div>
+			)}
+		>
+			<Grid gap={20}>
+				<RadioGroup
+					options={mobileList}
+					value={(attrs.value as any) ?? currentValue}
+					onChange={(value) => {
+						// @ts-ignore
+						handleChange && handleChange(value);
+						selectorRef.current?.close();
+					}}
+					mobileModal={true}
+				/>
+			</Grid>
+		</ModalButton>
+	) : (
+		<div className={classNames(styles.wrapper, attrs.className)}>
+			<select {...attrs} className={className} ref={ref} />
+			<ArrowDropDownIcon style={{ fontSize: 18 }} className={styles.caret} />
+		</div>
+	);
   }
 )
 

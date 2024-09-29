@@ -10,7 +10,7 @@ import Read from "./Read"
 import styles from "./TokenCard.module.scss"
 import { isWallet } from "auth"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props extends Partial<TokenItem>, Partial<FormatConfig> {
   // customizable

@@ -1,8 +1,9 @@
 import { CSSProperties, PropsWithChildren, ReactNode } from "react"
-import classNames from "classnames"
-import styles from "./Grid.module.scss"
+import classNamesBind from "classnames/bind";
+import classNames from "classnames";
+import styles from "./Grid.module.scss";
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 export const Row = (props: PropsWithChildren<{ align?: "start" }>) => {
   const { align, children } = props

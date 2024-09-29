@@ -1,11 +1,12 @@
 import { ForwardedRef, forwardRef, InputHTMLAttributes, ReactNode } from "react"
 import classNames from "classnames"
+import classNamesBind from "classnames/bind";
 import SearchIcon from "@mui/icons-material/Search"
 import { WithTokenItem } from "data/token"
 import { Flex } from "../layout"
 import styles from "./Input.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   token?: Token

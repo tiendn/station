@@ -1,10 +1,10 @@
 import { PropsWithChildren, ReactNode } from "react"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { Flex, Grid } from "../layout"
 import styles from "./Radio.module.scss"
 import { useTokenItem, WithTokenItem } from "data/token"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props {
   label: ReactNode

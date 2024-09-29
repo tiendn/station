@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { useIsClassic } from "data/query"
 import { Col, Page } from "components/layout"
 import LunaPrice from "./LunaPrice"
@@ -11,7 +11,7 @@ import Charts from "./Charts"
 import styles from "./Dashboard.module.scss"
 import { isWallet } from "auth"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const Dashboard = () => {
   const { t } = useTranslation()

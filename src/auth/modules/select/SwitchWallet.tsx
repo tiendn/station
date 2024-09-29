@@ -1,6 +1,6 @@
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import { truncate } from "@terra.kitchen/utils"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { Flex } from "components/layout"
 import AuthButton from "../../components/AuthButton"
 import MultisigBadge from "../../components/MultisigBadge"
@@ -9,7 +9,7 @@ import is from "../../scripts/is"
 import SelectPreconfigured from "./SelectPreconfigured"
 import styles from "./SwitchWallet.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const SwitchWallet = () => {
   const { connectedWallet, wallets, connect } = useAuth()

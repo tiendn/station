@@ -1,9 +1,9 @@
 import { ReactNode } from "react"
 import { Link } from "react-router-dom"
 import styles from "./AuthList.module.scss"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 type Item =
   | { to: string; children: string; icon: ReactNode }

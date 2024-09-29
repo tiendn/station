@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 import { useWallet } from "@terra-money/wallet-provider"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 
 import { Col, Page } from "components/layout"
 import useAuth from "auth/hooks/useAuth"
@@ -69,7 +69,7 @@ const AppVersion = () => {
   return <p>{version}</p>
 }
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const WalletSettings = () => {
   const { t } = useTranslation()

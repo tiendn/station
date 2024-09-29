@@ -8,7 +8,7 @@ import {
 } from "react"
 import { useLocation } from "react-router-dom"
 import ReactModal from "react-modal"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import CloseIcon from "@mui/icons-material/Close"
 import { RenderButton } from "types/components"
 import createContext from "utils/createContext"
@@ -16,7 +16,7 @@ import { getMaxHeightStyle } from "utils/style"
 import styles from "./Modal.module.scss"
 import { Button } from "../general"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 ReactModal.setAppElement("#station")
 

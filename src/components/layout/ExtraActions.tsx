@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import styles from "./ExtraActions.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props {
   align?: "stretch" | "end" | "center"

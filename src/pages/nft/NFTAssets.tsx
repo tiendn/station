@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { useAddress } from "data/wallet"
 import { useCustomTokensCW721 } from "data/settings/CustomTokens"
 import { InternalButton } from "components/general"
@@ -11,7 +11,7 @@ import NFTAssetGroup from "./NFTAssetGroup"
 import styles from "./NFTAssets.module.scss"
 import { isWallet } from "auth"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const NFTAssets = () => {
   const { t } = useTranslation()

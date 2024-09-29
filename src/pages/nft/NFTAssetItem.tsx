@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import qs from "qs"
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined"
 import ShortcutOutlinedIcon from "@mui/icons-material/ShortcutOutlined"
@@ -13,7 +13,7 @@ import NFTDetails from "./NFTDetails"
 import styles from "./NFTAssetItem.module.scss"
 import { isWallet } from "auth"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props {
   contract: TerraAddress

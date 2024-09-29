@@ -1,9 +1,9 @@
 import { Key } from "react"
 import Radio from "./Radio"
 import styles from "./RadioGroup.module.scss"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props<T> {
   options: {

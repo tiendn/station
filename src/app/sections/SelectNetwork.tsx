@@ -8,9 +8,9 @@ import { ModalButton, Mode } from "components/feedback"
 import { useCustomNetworks } from "data/settings/CustomNetworks"
 import { InternalLink } from "components/general"
 import styles from "./MobileItem.module.scss"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const SelectNetwork = () => {
   const { t } = useTranslation()

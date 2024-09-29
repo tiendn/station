@@ -1,12 +1,13 @@
 import { PropsWithChildren, ReactNode } from "react"
-import classNames from "classnames"
-import { ErrorBoundary, WithFetching } from "../feedback"
-import Container from "./Container"
-import Card from "./Card"
-import styles from "./Page.module.scss"
-import { isWallet } from "auth"
+import classNamesBind from "classnames/bind";
+import classNames from "classnames";
+import { ErrorBoundary, WithFetching } from "../feedback";
+import Container from "./Container";
+import Card from "./Card";
+import styles from "./Page.module.scss";
+import { isWallet } from "auth";
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props extends QueryState {
   title?: string

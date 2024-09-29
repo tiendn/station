@@ -1,10 +1,11 @@
 import { PropsWithChildren } from "react"
 import classNames from "classnames"
+import classNamesBind from "classnames/bind";
 import { Color } from "types/components"
 import { InlineFlex } from "../layout"
 import styles from "./Tag.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props {
   color: Color

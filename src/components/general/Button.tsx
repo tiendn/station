@@ -1,10 +1,11 @@
 import { ButtonHTMLAttributes, ForwardedRef, ReactNode } from "react"
 import { forwardRef } from "react"
 import classNames from "classnames"
+import classNamesBind from "classnames/bind";
 import { LoadingCircular } from "../feedback"
 import styles from "./Button.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 export interface ButtonConfig {
   icon?: ReactNode

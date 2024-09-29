@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined"
 import LockIcon from "@mui/icons-material/Lock"
 import InfoIcon from "@mui/icons-material/Info"
@@ -16,7 +16,7 @@ import HeaderIconButton from "../components/HeaderIconButton"
 import styles from "./SelectTheme.module.scss"
 import is from "auth/scripts/is"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const Selector = () => {
   const { t } = useTranslation()

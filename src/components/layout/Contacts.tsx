@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { Contacts as ContactProps } from "types/components"
 import { ReactComponent as Medium } from "styles/images/community/Medium.svg"
 import { ReactComponent as Discord } from "styles/images/community/Discord.svg"
@@ -10,7 +10,7 @@ import { ExternalLink } from "components/general"
 import { Flex } from "components/layout"
 import styles from "./Contacts.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const ICON_SIZE = { width: 18, height: 18 }
 

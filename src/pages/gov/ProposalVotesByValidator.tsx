@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined"
 import { readPercent } from "@terra.kitchen/utils"
 import { ValAddress, Vote } from "@terra-money/terra.js";
@@ -20,7 +20,7 @@ import { options } from "./ProposalVotes"
 import styles from "./ProposalVotesByValidator.module.scss"
 import { isWallet } from "auth"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const ProposalVotesByValidator = ({ id }: { id: number }) => {
   const { t } = useTranslation()

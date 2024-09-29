@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { flatten } from "ramda"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown"
 import SearchIcon from "@mui/icons-material/Search"
 import createContext from "utils/createContext"
@@ -10,7 +10,7 @@ import { Empty } from "components/feedback"
 import { TokenCard, TokenCardGrid, TokenIcon } from "components/token"
 import styles from "./SelectToken.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface GroupProps {
   title: string

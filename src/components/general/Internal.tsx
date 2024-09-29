@@ -1,10 +1,10 @@
 import { HTMLAttributes, ReactNode } from "react"
 import { Link, LinkProps } from "react-router-dom"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import styles from "./Internal.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props {
   icon?: ReactNode

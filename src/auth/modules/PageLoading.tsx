@@ -3,13 +3,13 @@ import { useThemeAnimation } from "data/settings/Theme"
 import { FlexColumn } from "components/layout"
 import { sandbox } from "../scripts/env"
 import styles from "./Splash.module.scss"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 
 interface Props {
   inCard?: boolean
 }
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 const PageLoading = ({ inCard }: Props) => {
   const { t } = useTranslation()

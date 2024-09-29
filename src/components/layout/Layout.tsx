@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react"
 import { atom, useRecoilValue } from "recoil"
 import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import Container from "./Container"
 import styles from "./Layout.module.scss"
 import { useNav } from "../../app/routes"
@@ -10,7 +10,7 @@ import is from "auth/scripts/is"
 import { ReactComponent as BackIcon } from "styles/images/icons/Back.svg"
 import { RN_APIS, WebViewMessage } from "utils/rnModule"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 export const mobileIsMenuOpenState = atom({
   key: "mobileIsMenuOpen",

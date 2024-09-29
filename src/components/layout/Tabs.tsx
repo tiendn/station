@@ -1,7 +1,8 @@
 import { ReactNode, useEffect, useState, useRef } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
-import classNames from "classnames"
+import classNamesBind from "classnames/bind";
+import classNames from "classnames";
 import { ModalButton, ModalRef, Mode } from "components/feedback"
 import { capitalize } from "@mui/material"
 import styles from "./Tabs.module.scss"
@@ -11,7 +12,7 @@ import { Grid } from "./index"
 import Card from "./Card"
 import { ReactComponent as FilterIcon } from "styles/images/icons/Filter.svg"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props {
   tabs: { key: string; tab: string; children: ReactNode; disabled?: boolean }[]

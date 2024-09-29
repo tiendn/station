@@ -1,11 +1,11 @@
 import { ForwardedRef, forwardRef, Fragment } from "react"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { FormatConfig } from "@terra.kitchen/utils"
 import { formatPercent, readAmount, truncate } from "@terra.kitchen/utils"
 import { WithTokenItem } from "data/token"
 import styles from "./Read.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 interface Props extends Partial<FormatConfig> {
   amount?: Amount | Value

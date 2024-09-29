@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode, useMemo, useState } from "react"
 import { path } from "ramda"
-import classNames from "classnames/bind"
+import classNamesBind from "classnames/bind";
 import { ReactComponent as DropUpIcon } from "styles/images/icons/DropUp.svg"
 import { ReactComponent as DropDownIcon } from "styles/images/icons/DropDown.svg"
 import { TooltipIcon } from "components/display"
@@ -8,7 +8,7 @@ import Grid from "./Grid"
 import PaginationButtons from "./PaginationButtons"
 import styles from "./Table.module.scss"
 
-const cx = classNames.bind(styles)
+const cx = classNamesBind.bind(styles);
 
 type SortOrder = "desc" | "asc"
 type Sorter<T> = (a: T, b: T) => number
