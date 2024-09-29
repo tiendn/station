@@ -5862,6 +5862,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"change-case@npm:^5.4.4":
+  version: 5.4.4
+  resolution: "change-case@npm:5.4.4"
+  checksum: a22a25a763719658424ffbcd41e931d2d19cc22399cc765dca447fbe1eaf13e179d5e8ab1677af75f2e814dbddf74e42ffdecb526cd5bc906cc859f62aa154b2
+  languageName: node
+  linkType: hard
+
 "char-regex@npm:^1.0.2":
   version: 1.0.2
   resolution: "char-regex@npm:1.0.2"
@@ -11538,13 +11545,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"no-case@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "no-case@npm:4.0.0"
-  checksum: cbfd08163260cb6be5451637193332aff4b27ea741944f268c63adc874eb7343b0319714202a9293464b691674e2422eaaa9b851bae87d342d2162438846d585
-  languageName: node
-  linkType: hard
-
 "node-abi@npm:^3.3.0":
   version: 3.68.0
   resolution: "node-abi@npm:3.68.0"
@@ -14444,15 +14444,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sentence-case@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "sentence-case@npm:4.0.0"
-  dependencies:
-    no-case: ^4.0.0
-  checksum: 145793a9c9a1208a6e9686fd30b64f0e2a84e508e479d35f100076344d9f8617c36cbb90d7b630f51a3387ecb81824a96b6396bac8d0143d95faba8db20a768b
-  languageName: node
-  linkType: hard
-
 "serialize-javascript@npm:^4.0.0":
   version: 4.0.0
   resolution: "serialize-javascript@npm:4.0.0"
@@ -15450,6 +15441,7 @@ __metadata:
     axios: ^1.7.7
     bignumber.js: ^9.1.2
     buffer: ^6.0.3
+    change-case: ^5.4.4
     classnames: ^2.5.1
     crypto-browserify: ^3.12.0
     crypto-js: ^4.2.0
@@ -15480,7 +15472,6 @@ __metadata:
     sass: ^1.79.4
     secp256k1: ^5.0.0
     semver: ^7.6.3
-    sentence-case: ^4.0.0
     source-map-explorer: ^2.5.3
     stream: ^0.0.3
     typescript: ^5.6.2
