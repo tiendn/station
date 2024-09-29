@@ -30,11 +30,13 @@ const HistoryList = () => {
 		[address, baseURL]
 	);
 
-	const { data, error, fetchNextPage, ...state } = useInfiniteQuery(
-		[queryKey.TerraAPI, "history", baseURL, address],
-		fetchAccountHistory,
-		{ getNextPageParam: ({ next }) => next, enabled: !!(address && baseURL) }
-	);
+	const { data, error, fetchNextPage, ...state } = useInfiniteQuery({
+		queryKey: [queryKey.TerraAPI, "history", baseURL, address],
+		queryFn: fetchAccountHistory,
+		getNextPageParam: ({ next }) => next,
+		enabled: !!(address && baseURL),
+		initialPageParam: 0,
+	});
 
 	const { hasNextPage, isFetchingNextPage } = state;
 

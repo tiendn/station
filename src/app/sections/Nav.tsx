@@ -48,91 +48,93 @@ const Nav = () => {
   }, [pathname, subPage])
 
   return buttonView ? (
-    <nav>
-      <header className={styles.header}>
-        <NavLink to="/" className={classNames(styles.item, styles.logo)}>
-          <strong>Terra</strong> Station
-        </NavLink>
+		<nav>
+			<header className={styles.header}>
+				<NavLink to="/" className={classNames(styles.item, styles.logo)}>
+					<strong>Terra</strong> Station
+				</NavLink>
 
-        <NavLink
-          to="/wallet"
-          onClick={close}
-          className={({ isActive }) =>
-            cx(styles.mobileItem, { active: isActive && !isOpen })
-          }
-        >
-          <>
-            <WalletIcon {...ICON_SIZE} />
-            {t("WALLET")}
-          </>
-        </NavLink>
+				<NavLink
+					to="/wallet"
+					onClick={close}
+					className={({ isActive }) =>
+						cx(styles.mobileItem, { active: isActive && !isOpen })
+					}
+				>
+					<>
+						<WalletIcon {...ICON_SIZE} />
+						{t("WALLET")}
+					</>
+				</NavLink>
 
-        <NavLink
-          to="/swap"
-          onClick={close}
-          className={({ isActive }) =>
-            cx(styles.mobileItem, { active: isActive && !isOpen })
-          }
-        >
-          <>
-            <SwapIcon {...ICON_SIZE} />
-            {t("SWAP")}
-          </>
-        </NavLink>
+				<NavLink
+					to="/swap"
+					onClick={close}
+					className={({ isActive }) =>
+						cx(styles.mobileItem, { active: isActive && !isOpen })
+					}
+				>
+					<>
+						<SwapIcon {...ICON_SIZE} />
+						{t("SWAP")}
+					</>
+				</NavLink>
 
-        <NavLink
-          to="/stake"
-          onClick={close}
-          className={({ isActive }) =>
-            cx(styles.mobileItem, { active: isActive && !isOpen })
-          }
-        >
-          <>
-            <StakeIcon {...ICON_SIZE} />
-            {t("STAKE")}
-          </>
-        </NavLink>
+				<NavLink
+					to="/stake"
+					onClick={close}
+					className={({ isActive }) =>
+						cx(styles.mobileItem, { active: isActive && !isOpen })
+					}
+				>
+					<>
+						<StakeIcon {...ICON_SIZE} />
+						{t("STAKE")}
+					</>
+				</NavLink>
 
-        <button
-          className={cx(styles.toggle, styles.mobileItem, {
-            active: isOpen || isNeedMoreBtn,
-          })}
-          onClick={toggle}
-        >
-          <MenuIcon {...ICON_SIZE} />
-          {t("MORE")}
-        </button>
-      </header>
+				<button
+					className={cx(styles.toggle, styles.mobileItem, {
+						active: isOpen || isNeedMoreBtn,
+					})}
+					onClick={toggle}
+				>
+					<MenuIcon {...ICON_SIZE} />
+					{t("MORE")}
+				</button>
+			</header>
 
-      <section className={styles.menu}>
-        <div className={classNames(styles.menuTitle)}>
-          <NavLink to="/wallet" onClick={close}>
-            <strong>Terra</strong> Station
-          </NavLink>
-          {is.mobileNative() && (
-            <>
-              <QRScan />
-            </>
-          )}
-        </div>
-        <div className={classNames(styles.menuList)}>
-          {(is.mobile() ? mobileMenu : menu).map(({ path, title, icon }) => (
-            <NavLink
-              to={path}
-              className={cx(styles.item, styles.link)}
-              key={path}
-              onClick={close}
-            >
-              {icon}
-              {title}
-            </NavLink>
-          ))}
-        </div>
-      </section>
-    </nav>
+			<section className={styles.menu}>
+				<div className={classNames(styles.menuTitle)}>
+					<NavLink to="/wallet" onClick={close}>
+						<strong>Terra</strong> Station
+					</NavLink>
+					{is.mobileNative() && (
+						<>
+							<QRScan />
+						</>
+					)}
+				</div>
+				<div className={classNames(styles.menuList)}>
+					{(is.mobile() ? mobileMenu : menu).map(({ path, title, icon }) => (
+						<NavLink
+							to={path}
+							className={({ isActive }) =>
+								cx(styles.item, styles.link, { [styles.active]: isActive })
+							}
+							key={path}
+							onClick={close}
+						>
+							{icon}
+							{title}
+						</NavLink>
+					))}
+				</div>
+			</section>
+		</nav>
   ) : (
-    <></>
-  )
+		<></>
+  );
 }
 
 export default Nav

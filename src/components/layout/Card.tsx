@@ -41,7 +41,7 @@ const Card = (props: PropsWithChildren<Props>) => {
 				const style = {
 					bordered,
 					bg,
-					default: true,
+					default: !bordered,
 					grid: (title || extra) && (children || wrong),
 					link: to || href,
 					button: onClick,

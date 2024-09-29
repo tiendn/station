@@ -135,6 +135,8 @@ const SwapForm = () => {
 	});
 
 	useEffect(() => {
+		if (!simulationResults) return;
+
 		const { profitable } = simulationResults;
 		setValue("mode", profitable?.mode);
 	}, [simulationResults]);
