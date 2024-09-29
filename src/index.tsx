@@ -2,8 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client"; // Updated import
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import { getChainOptions } from "@terra-money/wallet-controller";
-import { WalletProvider } from "@terra-money/wallet-provider";
+import { getChainOptions, WalletProvider } from "@terra-money/wallet-provider";
 import "tippy.js/dist/tippy.css";
 
 import "config/lang";
