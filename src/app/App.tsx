@@ -67,11 +67,10 @@ const App = () => {
 										payload: valid.params?.uri,
 									},
 								});
-							} else {
-								toast.error(valid.errorMessage, {
-									toastId: "link-connect-error",
-								});
 							}
+							toast.error((valid as any).errorMessage, {
+								toastId: "link-connect-error",
+							});
 							break;
 						}
 						case "send": {
@@ -135,7 +134,7 @@ const App = () => {
 										},
 									});
 								} else {
-									return toast.error(valid.errorMessage, {
+									return toast.error((valid as any).errorMessage, {
 										toastId: "link-connect-error",
 									});
 								}
