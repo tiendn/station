@@ -79,7 +79,11 @@ export const useDelegation = (validatorAddress: ValAddress) => {
 			try {
 				const delegation = await lcd.staking.delegation(address, validatorAddress);
 				return delegation;
-			} catch {
+			} catch (error) {
+				// TODO: it should return with responses message instead of use-query default
+				if (error.response.data.message && error.response.data.message.includes("code = NotFound")) {
+					return Promise.reject(new Error(error.response.data.message));
+				}
 				return;
 			}
 		},
