@@ -6148,13 +6148,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"component-emitter@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "component-emitter@npm:2.0.0"
-  checksum: 017715272fcf82203932237260451df4c7c27e32a51a4a291faf6f503d6ef9e8583add993850cb5b98cc0c1b0846ff0c68938ad3ef1d544f9b480a290e74fb4f
-  languageName: node
-  linkType: hard
-
 "compressible@npm:~2.0.16":
   version: 2.0.18
   resolution: "compressible@npm:2.0.18"
@@ -9361,7 +9354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inherits@npm:2, inherits@npm:2.0.4, inherits@npm:^2.0.1, inherits@npm:^2.0.3, inherits@npm:^2.0.4, inherits@npm:~2.0.3":
+"inherits@npm:2, inherits@npm:2.0.4, inherits@npm:^2.0.1, inherits@npm:^2.0.3, inherits@npm:^2.0.4, inherits@npm:~2.0.3, inherits@npm:~2.0.4":
   version: 2.0.4
   resolution: "inherits@npm:2.0.4"
   checksum: 4a48a733847879d6cf6691860a6b1e3f0f4754176e4d71494c41f3475553768b10f84b5ce1d40fbd0e34e6bfbb864ee35858ad4dd2cf31e02fc4a154b724d7f1
@@ -13756,7 +13749,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:^3.0.6, readable-stream@npm:^3.1.1, readable-stream@npm:^3.4.0, readable-stream@npm:^3.6.0":
+"readable-stream@npm:^3.0.6, readable-stream@npm:^3.1.1, readable-stream@npm:^3.4.0, readable-stream@npm:^3.5.0, readable-stream@npm:^3.6.0":
   version: 3.6.2
   resolution: "readable-stream@npm:3.6.2"
   dependencies:
@@ -14893,12 +14886,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stream@npm:^0.0.3":
-  version: 0.0.3
-  resolution: "stream@npm:0.0.3"
+"stream-browserify@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "stream-browserify@npm:3.0.0"
   dependencies:
-    component-emitter: ^2.0.0
-  checksum: d59f108098c6bb40cec13dc0d4a9c435498b1f451d0f825e0e7145e83c8579bcf45f1bde0f621b89c925546bfff85ce09d591279e937bb87b1d0a88594fbe7dd
+    inherits: ~2.0.4
+    readable-stream: ^3.5.0
+  checksum: 4c47ef64d6f03815a9ca3874e2319805e8e8a85f3550776c47ce523b6f4c6cd57f40e46ec6a9ab8ad260fde61863c2718f250d3bedb3fe9052444eb9abfd9921
   languageName: node
   linkType: hard
 
@@ -15473,7 +15467,7 @@ __metadata:
     secp256k1: ^5.0.0
     semver: ^7.6.3
     source-map-explorer: ^2.5.3
-    stream: ^0.0.3
+    stream-browserify: ^3.0.0
     typescript: ^5.6.2
     vm-browserify: ^1.1.2
     web-vitals: ^2.1.4
