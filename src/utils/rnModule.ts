@@ -37,10 +37,10 @@ export enum ConfirmErrorCode {
 export type RN_API = typeof RN_APIS[keyof typeof RN_APIS] // type
 
 export const schemeUrl = {
-  connectWallet: /^.*(wallet_connect|walletconnect_connect).*payload/,
-  recoverWallet: /^terrastation:(|\/\/)wallet_recover\/\?payload=/,
-  send: /^terrastation:(|\/\/)send\/\?payload=/,
-}
+	connectWallet: /^.*(wallet_connect|walletconnect_connect).*payload/,
+	recoverWallet: /^luncdash:(|\/\/)wallet_recover\/\?payload=/,
+	send: /^luncdash:(|\/\/)send\/\?payload=/,
+};
 // 요청 타입
 type RN_API_REQ_TYPES = {
   [RN_APIS.APP_VERSION]: unknown

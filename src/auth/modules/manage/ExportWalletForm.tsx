@@ -76,15 +76,13 @@ const ExportWalletForm = () => {
 
   /* render */
   const render = {
-    [Mode.QR]: () => (
-      <QRCode value={`terrastation://wallet_recover/?payload=${encoded}`} />
-    ),
-    [Mode.KEY]: () => (
-      <Pre normal break copy>
-        {encoded}
-      </Pre>
-    ),
-  }
+		[Mode.QR]: () => <QRCode value={`luncdash://wallet_recover/?payload=${encoded}`} />,
+		[Mode.KEY]: () => (
+			<Pre normal break copy>
+				{encoded}
+			</Pre>
+		),
+  };
 
   return (
     <>
