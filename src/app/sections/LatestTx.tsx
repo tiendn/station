@@ -205,6 +205,6 @@ const useTimeText = (run: boolean) => {
 
   useInterval(() => setNow(new Date()), run ? 1000 : null)
 
-  const { minutes, seconds } = intervalToDuration({ start, end: now })
+  const { minutes = 0, seconds = 0 } = intervalToDuration({ start, end: now });
   return [minutes, seconds].map((str) => String(str).padStart(2, "0")).join(":")
 }
