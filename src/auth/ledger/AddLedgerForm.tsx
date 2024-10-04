@@ -41,9 +41,9 @@ const AddLedgerForm = () => {
       // const ledger: unknown = await WebViewMessage(RN_APIS.GET_LEDGER_KEY, { id: state.id, path: index })
       //
       const ledger = await WebViewMessage(RN_APIS.GET_LEDGER_KEY, {
-        id: state.id,
-        path: 0,
-      })
+			id: state.id,
+			path: index,
+		});
 
       // @ts-ignore
       if (typeof ledger === "string" && ledger?.includes("Error")) {
