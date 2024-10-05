@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import BigNumber from "bignumber.js";
 import * as anchor from "@anchor-protocol/anchor.js";
 import { readAmount, toAmount } from "@terra.kitchen/utils";
-import { Coins } from "@terra-money/terra.js";
+import { Coins } from "@terra-money/feather.js";
 import { has } from "utils/num";
 import { getAmount } from "utils/coin";
 import { AnchorEarnAction } from "txs/earn/AnchorEarnForm";

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { last } from "ramda";
 import { sentenceCase } from "change-case";
-import { Proposal, Vote } from "@terra-money/terra.js";
+import { Proposal, Vote } from "@terra-money/feather.js";
 import { Color } from "types/components";
 import { queryKey, RefetchOptions } from "../query";
 import { useLCDClient } from "./lcdClient";

@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import BigNumber from "bignumber.js";
-import { OracleParams, ValAddress } from "@terra-money/terra.js";
+import { OracleParams, ValAddress } from "@terra-money/feather.js";
 import { TerraValidator } from "types/validator";
 import { TerraProposalItem } from "types/proposal";
 import { useChainID, useNetwork } from "data/wallet";
@@ -32,7 +32,6 @@ export const useTerraAPIURL = (isClassic?: true) => {
 	return isClassic ? networks["classic"].api : network.api;
 };
 
-// TODO: fix this
 export const useFCDURL = () => {
 	const chainID = useChainID();
 	switch (chainID) {

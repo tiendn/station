@@ -14,6 +14,7 @@ export const useActiveDenoms = () => {
 		queryKey: [queryKey.oracle.activeDenoms, isClassic],
 		queryFn: async () => {
 			if (isClassic) {
+				// TODO: big problem here
 				const activeDenoms = await lcd.oracle.activeDenoms();
 				return sortDenoms(["uluna", ...activeDenoms]);
 			} else {
@@ -31,6 +32,7 @@ export const useExchangeRates = () => {
 	return useQuery({
 		queryKey: [queryKey.oracle.exchangeRates, isClassic],
 		queryFn: async () => {
+			// TODO: big problem here
 			if (isClassic) return await lcd.oracle.exchangeRates();
 		},
 		...RefetchOptions.DEFAULT,

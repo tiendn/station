@@ -3,7 +3,7 @@ import axios from "axios";
 import BigNumber from "bignumber.js";
 import { isFuture, isPast } from "date-fns";
 import { last } from "ramda";
-import { useAddress } from "../wallet";
+import { useAddress, useNetwork } from "../wallet";
 import { useLCDClient } from "./lcdClient";
 
 /* types */
@@ -141,6 +141,7 @@ export const parseVestingSchedule = (response: Account): ParsedVestingSchedule =
 
 /* query */
 export const queryAccounts = async (address: string, lcd: string) => {
+	console.log("lcd", lcd);
 	const path = "cosmos/auth/v1beta1/accounts";
 	const { data } = await axios.get<{ account: Account }>([path, address].join("/"), {
 		baseURL: lcd,
@@ -152,12 +153,13 @@ export const queryAccounts = async (address: string, lcd: string) => {
 export const useAccount = () => {
 	const address = useAddress();
 	const lcd = useLCDClient();
+	const network = useNetwork();
 
 	return useQuery({
 		queryKey: ["accounts", address],
 		queryFn: async () => {
 			if (!address) return null;
-			return await queryAccounts(address, lcd.config.URL);
+			return await queryAccounts(address, lcd.config[network.chainID].lcd);
 		},
 	});
 };

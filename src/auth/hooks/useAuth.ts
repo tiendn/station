@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from "react"
 import { atom, useRecoilState } from "recoil"
 import { encode } from "js-base64"
-import { CreateTxOptions, Tx, isTxError } from "@terra-money/terra.js";
-import { AccAddress, SignDoc } from "@terra-money/terra.js";
-import { MnemonicKey, RawKey, SignatureV2 } from "@terra-money/terra.js";
+import { CreateTxOptions, Tx, isTxError } from "@terra-money/feather.js";
+import { AccAddress, SignDoc } from "@terra-money/feather.js";
+import { MnemonicKey, RawKey, SignatureV2 } from "@terra-money/feather.js";
 import { LedgerKey } from "@terra-money/ledger-terra-js";
 import BluetoothTransport from "@ledgerhq/hw-transport-web-ble";
 import { LEDGER_TRANSPORT_TIMEOUT } from "config/constants";
@@ -28,7 +28,7 @@ import encrypt from "../scripts/encrypt";
 import useAvailable from "./useAvailable";
 import decrypt from "../scripts/decrypt";
 import { RN_APIS, WebViewMessage } from "../../utils/rnModule";
-import { SyncTxBroadcastResult } from "@terra-money/terra.js/dist/client/lcd/api/TxAPI";
+import { SyncTxBroadcastResult } from "@terra-money/feather.js/dist/client/lcd/api/TxAPI";
 import { useSessionsState } from "./useSessions"
 
 const walletState = atom({

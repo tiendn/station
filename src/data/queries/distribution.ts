@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import BigNumber from "bignumber.js";
-import { Coins, Rewards, ValAddress, Validator } from "@terra-money/terra.js";
+import { Coins, Rewards, ValAddress, Validator } from "@terra-money/feather.js";
 import { has } from "utils/num";
 import { sortCoins } from "utils/coin";
 import { queryKey, RefetchOptions } from "../query";

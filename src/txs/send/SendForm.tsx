@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next"
 import { useForm } from "react-hook-form"
 import { useLocation } from "react-router-dom"
 import PersonIcon from "@mui/icons-material/Person"
-import { AccAddress } from "@terra-money/terra.js";
-import { MsgExecuteContract, MsgSend } from "@terra-money/terra.js";
+import { AccAddress } from "@terra-money/feather.js";
+import { MsgExecuteContract, MsgSend } from "@terra-money/feather.js";
 import { isDenom, toAmount, truncate, readAmount } from "@terra.kitchen/utils"
 import { SAMPLE_ADDRESS } from "config/constants"
 import { queryKey } from "data/query"

@@ -16,7 +16,7 @@ import { LoadingCircular, Modal, Mode } from "components/feedback"
 import { useThemeAnimation } from "data/settings/Theme"
 import styles from "components/layout/Card.module.scss"
 import { useIsClassic } from "../../data/query"
-import { AccAddress, Tx } from "@terra-money/terra.js";
+import { AccAddress, Tx } from "@terra-money/feather.js";
 
 interface DeviceInterface {
   name: string

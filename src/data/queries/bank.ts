@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { isDenomTerraNative } from "@terra.kitchen/utils";
-import { Coins } from "@terra-money/terra.js";
+import { Coins } from "@terra-money/feather.js";
 import createContext from "utils/createContext";
 import { queryKey, RefetchOptions, useIsClassic } from "../query";
 import { useAddress, useNetwork } from "../wallet";
