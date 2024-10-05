@@ -8,7 +8,7 @@ import { Col, Page } from "components/layout"
 import useAuth from "auth/hooks/useAuth"
 import AuthList from "auth/components/AuthList"
 import BioToggle from "./BioToggle"
-import SelectTheme from "app/sections/SelectTheme"
+// import SelectTheme from "app/sections/SelectTheme"
 import SelectNetwork from "app/sections/SelectNetwork"
 import SelectLanguage from "app/sections/SelectLanguage"
 import { isWallet } from "auth"
@@ -30,31 +30,32 @@ export const useManageWallet = () => {
 }
 
 export const useSettings = () => {
-  const { t } = useTranslation()
+	const { t } = useTranslation();
 
-  const Network = {
-    children: t("Network"),
-    icon: <SelectNetwork />,
-  }
+	const Network = {
+		children: t("Network"),
+		icon: <SelectNetwork />,
+	};
 
-  const Language = {
-    children: t("Language"),
-    icon: <SelectLanguage />,
-  }
+	const Language = {
+		children: t("Language"),
+		icon: <SelectLanguage />,
+	};
 
-  const Theme = {
-    children: t("Theme"),
-    icon: <SelectTheme />,
-  }
+	// const Theme = {
+	// 	children: t("Theme"),
+	// 	icon: <SelectTheme />,
+	// };
 
-  const Version = {
-    children: t("Version"),
-    icon: <AppVersion />,
-  }
+	const Version = {
+		children: t("Version"),
+		icon: <AppVersion />,
+	};
 
-  return isWallet.mobileNative()
-    ? [Network, Language, Theme, Version]
-    : [Language, Theme]
+	// return isWallet.mobileNative()
+	//   ? [Network, Language, Theme, Version]
+	//   : [Language, Theme]
+	return isWallet.mobileNative() ? [Network, Language, Version] : [Language];
 }
 
 const AppVersion = () => {

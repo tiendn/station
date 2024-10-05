@@ -16,10 +16,11 @@ export enum SettingKey {
   WithdrawAs = "WithdrawAs", // Rewards (Preferred denom to withdraw rewards)
 }
 
-const isSystemDarkMode =
-  window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+// const isSystemDarkMode =
+//   window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
 
-export const DefaultTheme = themes[Number(isSystemDarkMode)]
+// export const DefaultTheme = themes[Number(isSystemDarkMode)]
+export const DefaultTheme = themes[0]
 
 export const DefaultCustomTokensItem = { ibc: [], cw20: [], cw721: [] }
 const DefaultCustomTokens = { mainnet: DefaultCustomTokensItem }
