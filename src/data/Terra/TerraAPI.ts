@@ -40,6 +40,8 @@ export const useFCDURL = () => {
 			return "https://terra-classic-fcd.publicnode.com";
 		case "pisco-1":
 			return "https://pisco-fcd.terra.dev";
+		case "rebel-2":
+			return "https://lcd.luncblaze.com/";
 		default:
 			return "https://phoenix-fcd.terra.dev";
 	}

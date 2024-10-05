@@ -9,7 +9,7 @@ import { useNetworks } from "app/InitNetworks"
 const AddNetwork = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { mainnet } = useNetworks()
+  const { classic } = useNetworks();
   const [, setNetwork] = useNetworkState()
   const { add, validateName } = useCustomNetworks()
 
@@ -26,42 +26,36 @@ const AddNetwork = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit(submit)}>
-      <FormItem label={t("Name")} error={errors.name?.message}>
-        <Input
-          {...register("name", {
-            required: true,
-            validate: {
-              exists: (value) =>
-                !validateName(value) ? `${value} already exists` : undefined,
-            },
-          })}
-          placeholder={mainnet.name}
-          autoFocus
-        />
-      </FormItem>
+		<Form onSubmit={handleSubmit(submit)}>
+			<FormItem label={t("Name")} error={errors.name?.message}>
+				<Input
+					{...register("name", {
+						required: true,
+						validate: {
+							exists: (value) =>
+								!validateName(value) ? `${value} already exists` : undefined,
+						},
+					})}
+					placeholder={classic.name}
+					autoFocus
+				/>
+			</FormItem>
 
-      <FormItem label={t("Chain ID")} error={errors.chainID?.message}>
-        <Input
-          {...register("chainID", { required: true })}
-          placeholder={mainnet.chainID}
-        />
-      </FormItem>
+			<FormItem label={t("Chain ID")} error={errors.chainID?.message}>
+				<Input {...register("chainID", { required: true })} placeholder={classic.chainID} />
+			</FormItem>
 
-      <FormItem label={t("LCD")} error={errors.lcd?.message}>
-        <Input
-          {...register("lcd", { required: true })}
-          placeholder={mainnet.lcd}
-        />
-      </FormItem>
+			<FormItem label={t("LCD")} error={errors.lcd?.message}>
+				<Input {...register("lcd", { required: true })} placeholder={classic.lcd} />
+			</FormItem>
 
-      <Checkbox {...register("preconfigure")} checked={preconfigure}>
-        {t("Preconfigure accounts")}
-      </Checkbox>
+			<Checkbox {...register("preconfigure")} checked={preconfigure}>
+				{t("Preconfigure accounts")}
+			</Checkbox>
 
-      <Submit disabled={!isValid} />
-    </Form>
-  )
+			<Submit disabled={!isValid} />
+		</Form>
+  );
 }
 
 export default AddNetwork
