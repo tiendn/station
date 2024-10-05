@@ -2,11 +2,8 @@
 
 .screen {
   height: 100vh;
-  // background-color: var(--bg);
-  // color: var(--text);
-  background-color: black;
-  color: hsl(49, 84%, 55%);
-
+  background-color: var(--bg);
+  color: var(--text);
 }
 .page {
   margin-top: -3px;

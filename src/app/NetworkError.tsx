@@ -12,36 +12,36 @@ const NetworkError = () => {
   const isLocalTerra = network === "localterra"
 
   return (
-    <FlexColumn gap={20}>
-      <img src={Logo} alt={t("Logo")} width={60} height={60} />
+		<FlexColumn gap={20}>
+			<img src={Logo} alt={t("Logo")} width={60} height={60} />
 
-      <article>
-        <h1 className={styles.title}>
-          {network === "mainnet"
-            ? t("Too many requests. Try again later.")
-            : isLocalTerra
-            ? t("LocalTerra is not running")
-            : t(`${network} is not running`)}
-        </h1>
+			<article>
+				<h1 className={styles.title}>
+					{network === "classic"
+						? t("Too many requests. Try again later.")
+						: isLocalTerra
+							? t("LocalTerra is not running")
+							: t(`${network} is not running`)}
+				</h1>
 
-        {isLocalTerra && (
-          <ExternalLink href="https://github.com/terra-money/localterra">
-            {t("Learn more")}
-          </ExternalLink>
-        )}
-      </article>
+				{isLocalTerra && (
+					<ExternalLink href="https://github.com/terra-money/localterra">
+						{t("Learn more")}
+					</ExternalLink>
+				)}
+			</article>
 
-      {network === "mainnet" ? (
-        <Button onClick={() => window.location.reload()} size="small" outline>
-          {t("Refresh")}
-        </Button>
-      ) : (
-        <Button onClick={() => setNetwork("mainnet")} size="small" outline>
-          {t("Back to mainnet")}
-        </Button>
-      )}
-    </FlexColumn>
-  )
+			{network === "classic" ? (
+				<Button onClick={() => window.location.reload()} size="small" outline>
+					{t("Refresh")}
+				</Button>
+			) : (
+				<Button onClick={() => setNetwork("classic")} size="small" outline>
+					{t("Back to classic")}
+				</Button>
+			)}
+		</FlexColumn>
+  );
 }
 
 export default NetworkError

@@ -17,6 +17,14 @@ import ElectronVersion from "app/ElectronVersion";
 import App from "app/App";
 
 const connectorOpts = { bridge: BRIDGE };
+const defaultNetwork = {
+	name: "classic",
+	chainID: "columbus-5",
+	lcd: "https://terra-classic-lcd.publicnode.com",
+	api: "https://terra-classic-public-api.publicnode.com",
+	mantle: "https://columbus-mantle.terra.dev",
+	walletconnectID: 2,
+};
 
 getChainOptions().then((chainOptions) => {
 	const container = document.getElementById("station");
@@ -26,7 +34,11 @@ getChainOptions().then((chainOptions) => {
 			<RecoilRoot>
 				<BrowserRouter>
 					<ScrollToTop />
-					<WalletProvider {...chainOptions} connectorOpts={connectorOpts}>
+					<WalletProvider
+						{...chainOptions}
+						defaultNetwork={defaultNetwork}
+						connectorOpts={connectorOpts}
+					>
 						<InitNetworks>
 							<InitWallet>
 								<InitTheme />

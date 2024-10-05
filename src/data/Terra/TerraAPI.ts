@@ -26,10 +26,10 @@ export enum AggregateWallets {
 	ACTIVE = "active",
 }
 
-export const useTerraAPIURL = (mainnet?: true) => {
+export const useTerraAPIURL = (isClassic?: true) => {
 	const network = useNetwork();
 	const networks = useNetworks();
-	return mainnet ? networks["mainnet"].api : network.api;
+	return isClassic ? networks["classic"].api : network.api;
 };
 
 // TODO: fix this
