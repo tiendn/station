@@ -3300,7 +3300,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terra-money/wallet-controller@npm:^3.11.2, @terra-money/wallet-controller@npm:^3.9.1":
+"@terra-money/wallet-controller@npm:3.11.2":
   version: 3.11.2
   resolution: "@terra-money/wallet-controller@npm:3.11.2"
   dependencies:
@@ -3321,6 +3321,30 @@ __metadata:
   peerDependencies:
     "@terra-money/terra.js": ^3.1.6
   checksum: 06ea64196eb5b3e20d313983b9b2a20516710d02b4fc1dd103ee24535568568f8024f72b511e5df37cde33648813a574e44e8c2020c55c3702b20da0eb989caa
+  languageName: node
+  linkType: hard
+
+"@terra-money/wallet-controller@patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch::locator=terra-station%40workspace%3A.":
+  version: 3.11.2
+  resolution: "@terra-money/wallet-controller@patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch::version=3.11.2&hash=02e509&locator=terra-station%40workspace%3A."
+  dependencies:
+    "@terra-money/wallet-types": ^3.11.2
+    "@terra-money/web-extension-interface": ^3.11.2
+    "@walletconnect/core": ^1.6.6
+    "@walletconnect/iso-crypto": ^1.6.6
+    "@walletconnect/types": ^1.6.6
+    "@walletconnect/utils": ^1.6.6
+    bowser: ^2.11.0
+    fast-deep-equal: ^3.1.3
+    jscrypto: ^1.0.0
+    mobile-detect: ^1.4.5
+    qrcode: ^1.5.0
+    rxjs: ^7.0.0
+    secp256k1: ^4.0.0
+    ws: ^7.5.5
+  peerDependencies:
+    "@terra-money/terra.js": ^3.1.6
+  checksum: 14986ab5a2a7c85a76169636c734b139c0a9730133c4ff3744206759af9e885918902666a1ebd8c6bbdddbc9b15493046f51ea3114ccf92a256e7c95ccb37f22
   languageName: node
   linkType: hard
 
@@ -3354,20 +3378,6 @@ __metadata:
   peerDependencies:
     "@terra-money/terra.js": ^3.1.6
   checksum: 39b035ad9969216a2a67f2ed2ab6bf3614ccde91f3849d36e5fbb14fe2e531edfd8c5d7e454ee37c6a3b9b22c6412e165c32504e59e57e46090edac5a08eedbd
-  languageName: node
-  linkType: hard
-
-"@terra.kitchen/utils@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@terra.kitchen/utils@npm:1.0.7"
-  dependencies:
-    "@types/numeral": ^2.0.2
-    "@types/ramda": ^0.27.57
-    bignumber.js: ^9.0.1
-    numeral: ^2.0.6
-    ramda: ^0.27.1
-    tiny-warning: ^1.0.3
-  checksum: defca67efb0577e96ea8ddb3eb0419161f0b4cb56faa199beb0f301efcbf7e657837faabb98ac4050fe10b8d7b1db6a4bab287ef7c70bf57d334a1523704aaed
   languageName: node
   linkType: hard
 
@@ -15393,6 +15403,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"terra-classic-utils@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "terra-classic-utils@npm:1.1.1"
+  dependencies:
+    "@types/numeral": ^2.0.2
+    "@types/ramda": ^0.27.57
+    bignumber.js: ^9.0.1
+    numeral: ^2.0.6
+    ramda: ^0.27.1
+    tiny-warning: ^1.0.3
+  checksum: 1a422f1d9ab6132477568012a3341394e5dfd53ac5dffc377778ac0f0f6bb6fd9311a1a3cf161e0eaa9990003cb12371bcdd8d6a5a8054a6f9235a5454aa0ec3
+  languageName: node
+  linkType: hard
+
 "terra-station@workspace:.":
   version: 0.0.0-use.local
   resolution: "terra-station@workspace:."
@@ -15414,7 +15438,6 @@ __metadata:
     "@terra-money/wallet-controller": ^3.9.1
     "@terra-money/wallet-provider": ^3.11.0
     "@terra-money/wallet-types": ^3.9.1
-    "@terra.kitchen/utils": ^1.0.7
     "@testing-library/jest-dom": ^5.17.0
     "@testing-library/react": ^13.4.0
     "@testing-library/user-event": ^13.5.0
@@ -15468,6 +15491,7 @@ __metadata:
     semver: ^7.6.3
     source-map-explorer: ^2.5.3
     stream-browserify: ^3.0.0
+    terra-classic-utils: ^1.1.1
     typescript: ^5.6.2
     vm-browserify: ^1.1.2
     web-vitals: ^2.1.4

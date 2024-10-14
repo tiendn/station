@@ -5,7 +5,7 @@ import { AccAddress, Coin, Coins, ValAddress } from "@terra-money/terra.js";
 import { Delegation, Validator } from "@terra-money/terra.js";
 import { MsgDelegate, MsgUndelegate } from "@terra-money/terra.js";
 import { MsgBeginRedelegate } from "@terra-money/terra.js";
-import { toAmount } from "@terra.kitchen/utils"
+import { toAmount } from "terra-classic-utils";
 import { getAmount } from "utils/coin"
 import { queryKey } from "data/query"
 import { useAddress } from "data/wallet"

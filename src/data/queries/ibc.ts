@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { isDenomIBC } from "@terra.kitchen/utils";
+import { isDenomIBC } from "terra-classic-utils";
 import { queryKey, RefetchOptions } from "../query";
 import { useLCDClient } from "./lcdClient";
 

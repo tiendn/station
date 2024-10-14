@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import { truncate } from "@terra.kitchen/utils"
+import { truncate } from "terra-classic-utils";
 import { RenderButton } from "types/components"
 import { useAddressBook } from "data/settings/AddressBook"
 import { Grid } from "components/layout"

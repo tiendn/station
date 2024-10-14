@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom"
 import PersonIcon from "@mui/icons-material/Person"
 import { AccAddress } from "@terra-money/terra.js";
 import { MsgExecuteContract, MsgSend } from "@terra-money/terra.js";
-import { isDenom, toAmount, truncate, readAmount } from "@terra.kitchen/utils"
+import { isDenom, toAmount, truncate, readAmount } from "terra-classic-utils";
 import { SAMPLE_ADDRESS } from "config/constants"
 import { queryKey } from "data/query"
 import { useAddress } from "data/wallet"

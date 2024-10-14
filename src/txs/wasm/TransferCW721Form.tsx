@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import PersonIcon from "@mui/icons-material/Person"
 import { AccAddress } from "@terra-money/terra.js";
 import { MsgExecuteContract } from "@terra-money/terra.js";
-import { truncate } from "@terra.kitchen/utils"
+import { truncate } from "terra-classic-utils";
 import { SAMPLE_ADDRESS } from "config/constants"
 import { queryKey } from "data/query"
 import { useAddress } from "data/wallet"

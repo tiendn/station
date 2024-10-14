@@ -32,7 +32,6 @@
 		"@terra-money/wallet-controller": "^3.9.1",
 		"@terra-money/wallet-provider": "^3.11.0",
 		"@terra-money/wallet-types": "^3.9.1",
-		"@terra.kitchen/utils": "^1.0.7",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
@@ -68,6 +67,7 @@
 		"sass": "^1.79.4",
 		"secp256k1": "^5.0.0",
 		"semver": "^7.6.3",
+		"terra-classic-utils": "^1.1.1",
 		"web-vitals": "^2.1.4",
 		"xss": "^1.0.15"
 	},

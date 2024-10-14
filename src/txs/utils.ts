@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js"
-import { readAmount, toAmount } from "@terra.kitchen/utils"
+import { readAmount, toAmount } from "terra-classic-utils";
 import { Coin, Coins } from "@terra-money/terra.js";
 import { has } from "utils/num"
 import { getShouldTax } from "data/queries/treasury"

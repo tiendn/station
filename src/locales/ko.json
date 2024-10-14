@@ -108,11 +108,11 @@
     "Contract": "계약"
   },
   "Dashboard": {
-    "Luna price": "루나 가격",
-    "Tax rate": "세율",
-    "Issuance": "발행량",
-    "Community pool": "커뮤니티 풀",
-    "Staking ratio": "위임 비율"
+		"Lunc price": "루나 가격",
+		"Tax rate": "세율",
+		"Issuance": "발행량",
+		"Community pool": "커뮤니티 풀",
+		"Staking ratio": "위임 비율"
   },
   "Chart": {
     "Transaction volume": "거래량",

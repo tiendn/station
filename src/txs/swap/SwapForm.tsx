@@ -5,8 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import BigNumber from "bignumber.js";
 import { AccAddress } from "@terra-money/terra.js";
-import { isDenomTerra } from "@terra.kitchen/utils";
-import { toAmount } from "@terra.kitchen/utils";
+import { isDenomTerra } from "terra-classic-utils";
+import { toAmount } from "terra-classic-utils";
 
 /* helpers */
 import { has } from "utils/num";

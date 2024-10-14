@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import classNamesBind from "classnames/bind";
 import AddIcon from "@mui/icons-material/Add"
 import CheckIcon from "@mui/icons-material/Check"
-import { truncate } from "@terra.kitchen/utils"
+import { truncate } from "terra-classic-utils";
 import { FinderLink } from "components/general"
 import { Token } from "components/token"
 import styles from "./TokenItem.module.scss"

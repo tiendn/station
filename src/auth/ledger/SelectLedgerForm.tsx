@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useState, useRef } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { useTranslation } from "react-i18next"
-import { truncate } from "@terra.kitchen/utils"
+import { truncate } from "terra-classic-utils";
 import { Pre } from "components/general"
 import { Card, FlexColumn, Grid } from "components/layout"
 import { Form, FormError, FormHelp } from "components/form"

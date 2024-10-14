@@ -108,11 +108,11 @@
     "Contract": "Contratto"
   },
   "Dashboard": {
-    "Luna price": "Prezzo Luna",
-    "Tax rate": "Aliquota fiscale",
-    "Issuance": "Emissione",
-    "Community pool": "Community-pool",
-    "Staking ratio": "Percentuale in Staking"
+		"Lunc price": "Prezzo Lunc",
+		"Tax rate": "Aliquota fiscale",
+		"Issuance": "Emissione",
+		"Community pool": "Community-pool",
+		"Staking ratio": "Percentuale in Staking"
   },
   "Chart": {
     "Transaction volume": "Volume di transazione",

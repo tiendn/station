@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next"
 import classNames from "classnames"
 import BigNumber from "bignumber.js"
 import { StakingPool, Tally, TallyParams, Vote } from "@terra-money/terra.js";
-import { readAmount, readPercent } from "@terra.kitchen/utils"
+import { readAmount, readPercent } from "terra-classic-utils";
 import { has } from "utils/num"
 import { combineState } from "data/query"
 import { useGetVoteOptionItem } from "data/queries/gov"

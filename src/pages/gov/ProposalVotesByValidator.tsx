@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import classNamesBind from "classnames/bind";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined"
-import { readPercent } from "@terra.kitchen/utils"
+import { readPercent } from "terra-classic-utils";
 import { ValAddress, Vote } from "@terra-money/terra.js";
 import { combineState } from "data/query"
 import { useDelegations } from "data/queries/staking"

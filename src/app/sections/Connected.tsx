@@ -4,7 +4,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet"
 import GroupsIcon from "@mui/icons-material/Groups"
 import QrCodeIcon from "@mui/icons-material/QrCode"
 import UsbIcon from "@mui/icons-material/Usb"
-import { truncate } from "@terra.kitchen/utils"
+import { truncate } from "terra-classic-utils";
 import { useWallet } from "@terra-money/wallet-provider"
 import { useAddress } from "data/wallet"
 import { useTnsName } from "data/external/tns"

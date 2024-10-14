@@ -14,23 +14,23 @@ import { forwardRef, useRef } from "react"
 const ChartButton = forwardRef<ModalRef, any>((_, ref) => {
   const { t } = useTranslation()
   return (
-    <ModalButton
-      ref={ref}
-      title={t("Luna price")}
-      modalType={isWallet.mobile() ? Mode.FULL : Mode.DEFAULT}
-      renderButton={(open) => (
-        <div onClick={open}>
-          {isWallet.mobile() ? (
-            <ArrowForwardIosIcon style={{ fontSize: 12 }} />
-          ) : (
-            t("Show chart")
-          )}
-        </div>
-      )}
-    >
-      <LunaPriceChart />
-    </ModalButton>
-  )
+		<ModalButton
+			ref={ref}
+			title={t("Lunc price")}
+			modalType={isWallet.mobile() ? Mode.FULL : Mode.DEFAULT}
+			renderButton={(open) => (
+				<div onClick={open}>
+					{isWallet.mobile() ? (
+						<ArrowForwardIosIcon style={{ fontSize: 12 }} />
+					) : (
+						t("Show chart")
+					)}
+				</div>
+			)}
+		>
+			<LunaPriceChart />
+		</ModalButton>
+  );
 })
 
 const LunaPrice = () => {
@@ -56,17 +56,17 @@ const LunaPrice = () => {
   }
 
   return (
-    <Card
-      {...state}
-      title={t("Luna price")}
-      className={styles.price}
-      size="small"
-      extra={isWallet.mobile() && <ChartButton ref={modalRef} />}
-      onClick={isWallet.mobile() ? () => modalRef.current.open() : undefined}
-    >
-      {render()}
-    </Card>
-  )
+		<Card
+			{...state}
+			title={t("Lunc price")}
+			className={styles.price}
+			size="small"
+			extra={isWallet.mobile() && <ChartButton ref={modalRef} />}
+			onClick={isWallet.mobile() ? () => modalRef.current.open() : undefined}
+		>
+			{render()}
+		</Card>
+  );
 }
 
 export default LunaPrice

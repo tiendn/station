@@ -29,63 +29,57 @@ const Coins = () => {
   const { data: denoms, ...state } = useActiveDenoms()
   const coins = useCoins(denoms)
   const { pathname } = useLocation()
-  const buyLunaList = useBuyList("Luna")
+  const buyLunaList = useBuyList("Lunc");
 
   const render = () => {
-    if (!coins) return
+		if (!coins) return;
 
-    const [all, filtered] = coins
-    const list = isClassic ? filtered : all
+		const [all, filtered] = coins;
+		const list = isClassic ? filtered : all;
 
-    return (
-      <>
-        <Grid gap={12}>
-          {isWalletEmpty && (
-            <FormError>{t("Coins required to post transactions")}</FormError>
-          )}
+		return (
+			<>
+				<Grid gap={12}>
+					{isWalletEmpty && (
+						<FormError>{t("Coins required to post transactions")}</FormError>
+					)}
 
-          {isClassic && (
-            <Flex end>{!isWalletEmpty && <SelectMinimumValue />}</Flex>
-          )}
+					{isClassic && <Flex end>{!isWalletEmpty && <SelectMinimumValue />}</Flex>}
 
-          <section>
-            {list.map(({ denom, ...item }) => (
-              <Asset
-                {...readNativeDenom(denom, isClassic)}
-                {...item}
-                key={denom}
-              />
-            ))}
-          </section>
-        </Grid>
-      </>
-    )
-  }
+					<section>
+						{list.map(({ denom, ...item }) => (
+							<Asset {...readNativeDenom(denom, isClassic)} {...item} key={denom} />
+						))}
+					</section>
+				</Grid>
+			</>
+		);
+  };
 
   const extra = isClassic && (
-    <InternalLink
-      icon={<BoltIcon style={{ fontSize: 18 }} />}
-      to="/swap/multiple"
-      disabled={length < 2}
-    >
-      {t("Swap multiple coins")}
-    </InternalLink>
-  )
+		<InternalLink
+			icon={<BoltIcon style={{ fontSize: 18 }} />}
+			to="/swap/multiple"
+			disabled={length < 2}
+		>
+			{t("Swap multiple coins")}
+		</InternalLink>
+  );
 
   const extraMobile = !isClassic && buyLunaList && pathname === "/wallet" && (
-    <ModalButton
-      title={t("Buy {{symbol}}", { symbol: "Luna" })}
-      modalType={Mode.FULL_CARD}
-      renderButton={(open) => (
-        <InternalButton onClick={open} chevron>
-          {t("Buy Luna")}
-        </InternalButton>
-      )}
-      maxHeight={false}
-    >
-      <ListGroup groups={buyLunaList} />
-    </ModalButton>
-  )
+		<ModalButton
+			title={t("Buy {{symbol}}", { symbol: "Lunc" })}
+			modalType={Mode.FULL_CARD}
+			renderButton={(open) => (
+				<InternalButton onClick={open} chevron>
+					{t("Buy Lunc")}
+				</InternalButton>
+			)}
+			maxHeight={false}
+		>
+			<ListGroup groups={buyLunaList} />
+		</ModalButton>
+  );
 
   return (
     <Card

@@ -1,7 +1,7 @@
 import { PropsWithChildren, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import VerifiedIcon from "@mui/icons-material/Verified"
-import { readPercent } from "@terra.kitchen/utils"
+import { readPercent } from "terra-classic-utils";
 
 import { useIsClassic } from "data/query"
 import { Card, Flex, Grid } from "components/layout"

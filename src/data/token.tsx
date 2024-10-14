@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
-import { isDenomIBC, isDenomTerra } from "@terra.kitchen/utils"
-import { readDenom, truncate } from "@terra.kitchen/utils"
+import { isDenomIBC, isDenomTerra } from "terra-classic-utils";
+import { readDenom, truncate } from "terra-classic-utils";
 import { AccAddress } from "@terra-money/terra.js";
 import { ASSETS } from "config/constants"
 import { useIsClassic } from "./query"

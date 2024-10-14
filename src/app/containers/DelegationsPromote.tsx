@@ -9,29 +9,29 @@ const DelegationsPromote = ({ horizontal }: { horizontal?: boolean }) => {
   const { t } = useTranslation()
 
   return (
-    <Card>
-      <article className={horizontal ? styles.horizontal : styles.vertical}>
-        <Flex>
-          <PaymentsOutlinedIcon style={{ fontSize: 56 }} />
-        </Flex>
+		<Card>
+			<article className={horizontal ? styles.horizontal : styles.vertical}>
+				<Flex>
+					<PaymentsOutlinedIcon style={{ fontSize: 56 }} />
+				</Flex>
 
-        <section className={styles.main}>
-          <h1 className={styles.title}>{t("Staking rewards")}</h1>
+				<section className={styles.main}>
+					<h1 className={styles.title}>{t("Staking rewards")}</h1>
 
-          <Grid gap={8}>
-            <p>{t("Stake Luna and earn rewards")}</p>
+					<Grid gap={8}>
+						<p>{t("Stake Lunc and earn rewards")}</p>
 
-            {!horizontal && (
-              <InternalLink to="/stake">
-                {t("Delegate now")}
-                <ChevronRight fontSize="inherit" />
-              </InternalLink>
-            )}
-          </Grid>
-        </section>
-      </article>
-    </Card>
-  )
+						{!horizontal && (
+							<InternalLink to="/stake">
+								{t("Delegate now")}
+								<ChevronRight fontSize="inherit" />
+							</InternalLink>
+						)}
+					</Grid>
+				</section>
+			</article>
+		</Card>
+  );
 }
 
 export default DelegationsPromote

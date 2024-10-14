@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react"
 import classNamesBind from "classnames/bind"
 import classNames from "classnames"
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet"
-import { FormatConfig } from "@terra.kitchen/utils"
+import { FormatConfig } from "terra-classic-utils";
 import { getMaxHeightStyle } from "utils/style"
 import { Flex } from "../layout"
 import TokenIcon from "./TokenIcon"

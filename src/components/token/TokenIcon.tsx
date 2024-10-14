@@ -1,7 +1,7 @@
 import { HTMLAttributes, useState } from "react"
 import classNamesBind from "classnames/bind";
 import { AccAddress } from "@terra-money/terra.js";
-import { isDenomIBC } from "@terra.kitchen/utils"
+import { isDenomIBC } from "terra-classic-utils";
 import { getIcon } from "data/token"
 import styles from "./TokenIcon.module.scss"
 

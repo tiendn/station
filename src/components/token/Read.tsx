@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef, Fragment } from "react"
 import classNamesBind from "classnames/bind";
-import { FormatConfig } from "@terra.kitchen/utils"
-import { formatPercent, readAmount, truncate } from "@terra.kitchen/utils"
+import { FormatConfig } from "terra-classic-utils";
+import { formatPercent, readAmount, truncate } from "terra-classic-utils";
 import { WithTokenItem } from "data/token"
 import styles from "./Read.module.scss"
 

@@ -1,7 +1,7 @@
 import { PropsWithChildren, useMemo } from "react"
 import { flatten, uniq, zipObj } from "ramda"
 import BigNumber from "bignumber.js"
-import { isDenomIBC, toAmount } from "@terra.kitchen/utils"
+import { isDenomIBC, toAmount } from "terra-classic-utils";
 import { AccAddress } from "@terra-money/terra.js";
 import { getAmount, sortDenoms } from "utils/coin"
 import { toPrice } from "utils/num"

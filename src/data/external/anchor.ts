@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import BigNumber from "bignumber.js";
 import * as anchor from "@anchor-protocol/anchor.js";
-import { readAmount, toAmount } from "@terra.kitchen/utils";
+import { readAmount, toAmount } from "terra-classic-utils";
 import { Coins } from "@terra-money/terra.js";
 import { has } from "utils/num";
 import { getAmount } from "utils/coin";

@@ -108,11 +108,11 @@
     "Contract": "Контракт"
   },
   "Dashboard": {
-    "Luna price": "Цена Luna",
-    "Tax rate": "Ставка налога",
-    "Issuance": "Выпуск",
-    "Community pool": "Пул сообщества",
-    "Staking ratio": "Коэффициент стейка"
+		"Lunc price": "Цена Lunc",
+		"Tax rate": "Ставка налога",
+		"Issuance": "Выпуск",
+		"Community pool": "Пул сообщества",
+		"Staking ratio": "Коэффициент стейка"
   },
   "Chart": {
     "Transaction volume": "Объем транзакций",

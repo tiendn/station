@@ -11,7 +11,7 @@ import { head, isNil } from "ramda";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
-import { isDenom, isDenomIBC, readDenom } from "@terra.kitchen/utils";
+import { isDenom, isDenomIBC, readDenom } from "terra-classic-utils";
 import { Coin, Coins, CreateTxOptions } from "@terra-money/terra.js";
 import { LCDClient, Fee } from "@terra-money/terra.js";
 import { isTxError } from "@terra-money/terra.js";

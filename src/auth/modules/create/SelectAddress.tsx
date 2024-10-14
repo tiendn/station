@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { readAmount, readDenom } from "@terra.kitchen/utils";
+import { readAmount, readDenom } from "terra-classic-utils";
 import { MnemonicKey, AccAddress } from "@terra-money/terra.js";
 import { Coins, Delegation, UnbondingDelegation } from "@terra-money/terra.js";
 import { sortCoins } from "utils/coin";
