@@ -72,13 +72,15 @@
 		"xss": "^1.0.15"
 	},
 	"scripts": {
-		"start": "craco start",
+		"start": "HTTPS=false craco start",
 		"build": "craco build",
 		"test": "craco test",
 		"analyze": "source-map-explorer 'build/static/js/*.js'"
 	},
 	"resolutions": {
-		"react-error-overlay": "6.0.11"
+		"react-error-overlay": "6.0.11",
+		"@terra-money/wallet-controller@^3.9.1": "patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch",
+		"@terra-money/wallet-controller@^3.11.2": "patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch"
 	},
 	"eslintConfig": {
 		"extends": [
