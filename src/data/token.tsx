@@ -74,24 +74,20 @@ export const readNativeDenom = (
   denom: Denom,
   isClassic?: boolean
 ): TokenItem => {
-  const symbol = readDenom(denom)
-  const symbolClassic = denom === "uluna" ? "LUNC" : symbol + "C"
+	const symbol = readDenom(denom);
+	// const symbolClassic = denom === "uluna" ? "LUNC" : symbol + "C"
+	// use terra-classic-utils auto add C to symbol
+	const symbolClassic = denom === "uluna" ? "LUNC" : symbol;
 
-  const path = isDenomTerra(denom)
-    ? `Terra/${symbol}.svg`
-    : isClassic
-    ? "LUNC.svg"
-    : "Luna.svg"
+	const path = isDenomTerra(denom) ? `Terra/${symbol}.svg` : isClassic ? "LUNC.svg" : "Luna.svg";
 
-  return {
-    token: denom,
-    symbol: isClassic ? symbolClassic : symbol,
-    name: isDenomTerra(denom)
-      ? `Terra ${denom.slice(1).toUpperCase()}`
-      : undefined,
-    icon: getIcon(path),
-    decimals: 6,
-  }
+	return {
+		token: denom,
+		symbol: isClassic ? symbolClassic : symbol,
+		name: isDenomTerra(denom) ? `Terra ${denom.slice(1).toUpperCase()}` : undefined,
+		icon: getIcon(path),
+		decimals: 6,
+	};
 }
 
 export const readIBCDenom = (item: IBCTokenItem): TokenItem => {
