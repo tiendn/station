@@ -32,6 +32,10 @@
   &:hover {
     text-decoration: none;
   }
+  &.active {
+   background-color: #100c34;
+  }
+
   @include mobile {
     svg {
       padding: 15px;
