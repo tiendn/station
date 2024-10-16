@@ -51,30 +51,30 @@ const ConnectWallet = ({ renderButton }: Props) => {
   ];
 
   return (
-    <ModalButton
-      title={t("Connect wallet")}
-      renderButton={renderButton ?? defaultRenderButton}
-      modalType={isWallet.mobile() ? Mode.BOTTOM : Mode.DEFAULT}
-      maxHeight
-    >
-      <Grid gap={isWallet.mobile() ? 0 : 20}>
-        <SwitchWallet />
-        {isWallet.mobileNative() ? (
-          <WalletMenuButton />
-        ) : (
-          <>
-            <List list={available.length ? available : list} />
-            {!!available.length && (
-              <FormHelp>
-                Use <ExternalLink href={STATION}>Terra Station</ExternalLink> on
-                the browser to access with Ledger device
-              </FormHelp>
-            )}
-          </>
-        )}
-      </Grid>
-    </ModalButton>
-  )
+		<ModalButton
+			title={t("Connect wallet")}
+			renderButton={renderButton ?? defaultRenderButton}
+			modalType={isWallet.mobile() ? Mode.BOTTOM : Mode.DEFAULT}
+			maxHeight
+		>
+			<Grid gap={isWallet.mobile() ? 0 : 20}>
+				<SwitchWallet />
+				{isWallet.mobileNative() ? (
+					<WalletMenuButton />
+				) : (
+					<>
+						<List list={available.length ? available : list} />
+						{!!available.length && (
+							<FormHelp>
+								Use <ExternalLink href={STATION}>Lunc Dash</ExternalLink> on the
+								browser to access with Ledger device
+							</FormHelp>
+						)}
+					</>
+				)}
+			</Grid>
+		</ModalButton>
+  );
 }
 
 export default ConnectWallet

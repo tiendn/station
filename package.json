@@ -1,7 +1,7 @@
 {
-	"name": "terra-station",
-	"description": "A web application to interact with Terra Core.",
-	"homepage": "https://station.money",
+	"name": "lunc-dash-web",
+	"description": "A web application to interact with Terra Classic.",
+	"homepage": "https://luncdash.com",
 	"author": "Terra <engineering@terra.money> (https://station.money)",
 	"maintainers": [
 		{

@@ -36,64 +36,62 @@ const AssetActions = ({ token, symbol, balance }: Props) => {
   const buyList = useBuyList(symbol)
 
   return is.mobile() ? (
-    <ExtraActions>
-      <InternalLink
-        icon={<ArrowForwardIosIcon style={{ fontSize: 12 }} />}
-        to={`/send?token=${token}`}
-        state={state}
-        disabled={isWalletEmpty || !has(balance)}
-      />
-    </ExtraActions>
+		<ExtraActions>
+			<InternalLink
+				icon={<ArrowForwardIosIcon style={{ fontSize: 12 }} />}
+				to={`/send?token=${token}`}
+				state={state}
+				disabled={isWalletEmpty || !has(balance)}
+			/>
+		</ExtraActions>
   ) : (
-    <ExtraActions>
-      {!isClassic && buyList && (
-        <ModalButton
-          title={t("Buy {{symbol}}", { symbol })}
-          renderButton={(open) => (
-            <InternalButton
-              icon={<MonetizationOnOutlinedIcon style={{ fontSize: 18 }} />}
-              onClick={open}
-            >
-              {t("Buy")}
-            </InternalButton>
-          )}
-          maxHeight={false}
-        >
-          <ListGroup groups={buyList} />
-        </ModalButton>
-      )}
+		<ExtraActions>
+			{!isClassic && buyList && (
+				<ModalButton
+					title={t("Buy {{symbol}}", { symbol })}
+					renderButton={(open) => (
+						<InternalButton
+							icon={<MonetizationOnOutlinedIcon style={{ fontSize: 18 }} />}
+							onClick={open}
+						>
+							{t("Buy")}
+						</InternalButton>
+					)}
+					maxHeight={false}
+				>
+					<ListGroup groups={buyList} />
+				</ModalButton>
+			)}
 
-      {!isClassic && token.startsWith("ibc/") && (
-        <ExternalIconLink
-          icon={<OpenInNewIcon style={{ fontSize: 18 }} />}
-          href={`https://bridge.station.money`}
-        >
-          {t("Bridge")}
-        </ExternalIconLink>
-      )}
+			{!isClassic && token.startsWith("ibc/") && (
+				<ExternalIconLink
+					icon={<OpenInNewIcon style={{ fontSize: 18 }} />}
+					href={`https://classic-bridge.terra.money/`}
+				>
+					{t("Bridge")}
+				</ExternalIconLink>
+			)}
 
-      <InternalLink
-        icon={<ShortcutOutlinedIcon style={{ fontSize: 18 }} />}
-        to={`/send?token=${token}`}
-        disabled={isWalletEmpty || !has(balance)}
-      >
-        {t("Send")}
-      </InternalLink>
+			<InternalLink
+				icon={<ShortcutOutlinedIcon style={{ fontSize: 18 }} />}
+				to={`/send?token=${token}`}
+				disabled={isWalletEmpty || !has(balance)}
+			>
+				{t("Send")}
+			</InternalLink>
 
-      {networkName !== "testnet" && (
-        <InternalLink
-          icon={<RestartAltIcon style={{ fontSize: 18 }} />}
-          to="/swap"
-          state={token}
-          disabled={
-            isWalletEmpty || !has(balance) || !getIsSwappableToken(token)
-          }
-        >
-          {t("Swap")}
-        </InternalLink>
-      )}
-    </ExtraActions>
-  )
+			{networkName !== "testnet" && (
+				<InternalLink
+					icon={<RestartAltIcon style={{ fontSize: 18 }} />}
+					to="/swap"
+					state={token}
+					disabled={isWalletEmpty || !has(balance) || !getIsSwappableToken(token)}
+				>
+					{t("Swap")}
+				</InternalLink>
+			)}
+		</ExtraActions>
+  );
 }
 
 export default AssetActions
