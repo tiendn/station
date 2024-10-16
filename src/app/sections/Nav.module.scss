@@ -32,9 +32,9 @@
   &:hover {
     text-decoration: none;
   }
-  &.active {
-   background-color: #100c34;
-  }
+  // &.active {
+  //  background-color: #100c34;
+  // }
 
   @include mobile {
     svg {
