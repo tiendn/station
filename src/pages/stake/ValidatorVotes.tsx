@@ -24,42 +24,42 @@ const ValidatorVotes = ({ validator }: { validator: TerraValidator }) => {
   }, [t, votingPowerRate])
 
   return (
-    <Card {...votingPowerRateState}>
-      <Grid gap={20}>
-        {contents && <ValidatorNumbers contents={contents} />}
-        {votes && (
-          <Table
-            columns={[
-              { dataIndex: "proposal_id", title: "ID" },
-              {
-                dataIndex: "title",
-                title: "Title",
-                render: (title, { proposal_id }) => {
-                  return <Link to={`/proposal/${proposal_id}`}>{title}</Link>
-                },
-              },
-              {
-                dataIndex: "options",
-                title: "Vote",
-                render: (options) => {
-                  return options
-                    .map(({ option }: { option: string }) => {
-                      const { label } = getVoteOptionItem(option)
-                      return label
-                    })
-                    .join(", ")
-                },
-                align: "right",
-              },
-            ]}
-            dataSource={reverse(votes)}
-            pagination={5}
-            size="small"
-          />
-        )}
-      </Grid>
-    </Card>
-  )
+		<Card {...votingPowerRateState}>
+			<Grid gap={20}>
+				{contents && <ValidatorNumbers contents={contents} />}
+				{votes && (
+					<Table
+						columns={[
+							{ dataIndex: "id", title: "ID" },
+							{
+								dataIndex: "title",
+								title: "Title",
+								render: (title, { id }) => {
+									return <Link to={`/proposal/${id}`}>{title}</Link>;
+								},
+							},
+							{
+								dataIndex: "options",
+								title: "Vote",
+								render: (options) => {
+									return options
+										.map(({ option }: { option: string }) => {
+											const { label } = getVoteOptionItem(option);
+											return label;
+										})
+										.join(", ");
+								},
+								align: "right",
+							},
+						]}
+						dataSource={reverse(votes)}
+						pagination={5}
+						size="small"
+					/>
+				)}
+			</Grid>
+		</Card>
+  );
 }
 
 export default ValidatorVotes

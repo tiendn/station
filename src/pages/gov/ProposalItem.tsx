@@ -10,17 +10,17 @@ interface Props {
 }
 
 const ProposalItem = ({ proposal, showVotes }: Props) => {
-  const { proposal_id, status } = proposal
+  const { id, status } = proposal;
 
   return (
-    <FlexColumn gap={36} className={styles.item}>
-      <ProposalHeader proposal={proposal} />
+		<FlexColumn gap={36} className={styles.item}>
+			<ProposalHeader proposal={proposal} />
 
-      {showVotes && status === ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD ? (
-        <ProposalVotes id={Number(proposal_id)} />
-      ) : null}
-    </FlexColumn>
-  )
+			{showVotes && status === ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD ? (
+				<ProposalVotes id={Number(id)} />
+			) : null}
+		</FlexColumn>
+  );
 }
 
 export default ProposalItem

@@ -34,44 +34,38 @@ const ProposalsByStatus = ({ status }: { status: ProposalStatus }) => {
   const state = combineState(whitelistState, proposalState)
 
   const render = () => {
-    if (!(data && whitelistData))
-      return isWallet.mobileNative() ? <PageLoading inCard /> : null
+		if (!(data && whitelistData))
+			return isWallet.mobileNative() ? <PageLoading inCard /> : null;
 
-    const proposals =
-      status === ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD && !showAll
-        ? data.filter(({ proposal_id }) =>
-            whitelist?.includes(Number(proposal_id))
-          )
-        : data
+		const proposals =
+			status === ProposalStatus.PROPOSAL_STATUS_VOTING_PERIOD && !showAll
+				? data.filter(({ id }) => whitelist?.includes(Number(id)))
+				: data;
 
-    return !proposals.length ? (
-      <>
-        <Card>
-          <Empty>
-            {t("No proposals in {{label}} period", {
-              label: label.toLowerCase(),
-            })}
-          </Empty>
-        </Card>
-        <GovernanceParams />
-      </>
-    ) : (
-      <>
-        <section className={styles.list}>
-          {reverse(proposals).map((item) => (
-            <Card
-              to={`/proposal/${item.proposal_id}`}
-              className={styles.link}
-              key={item.proposal_id}
-            >
-              <ProposalItem proposal={item} showVotes={!showAll} />
-            </Card>
-          ))}
-        </section>
+		return !proposals.length ? (
+			<>
+				<Card>
+					<Empty>
+						{t("No proposals in {{label}} period", {
+							label: label.toLowerCase(),
+						})}
+					</Empty>
+				</Card>
+				<GovernanceParams />
+			</>
+		) : (
+			<>
+				<section className={styles.list}>
+					{reverse(proposals).map((item) => (
+						<Card to={`/proposal/${item.id}`} className={styles.link} key={item.id}>
+							<ProposalItem proposal={item} showVotes={!showAll} />
+						</Card>
+					))}
+				</section>
 
-        <GovernanceParams />
-      </>
-    )
+				<GovernanceParams />
+			</>
+		);
   }
 
   return (

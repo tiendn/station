@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { last } from "ramda";
-import { sentenceCase } from "change-case";
 import { Proposal, Vote } from "@terra-money/terra.js";
 import { Color } from "types/components";
 import { queryKey, RefetchOptions } from "../query";
@@ -11,27 +9,31 @@ import { useNetwork } from "data/wallet";
 
 /* types */
 export interface ProposalResult {
-	proposal_id: string;
-	content: {
-		"@type": string;
-		title: string;
-		description: string;
-	} & Record<string, any>;
-	status: ProposalStatus;
-
-	final_tally_result: {
-		yes: string;
-		abstain: string;
-		no: string;
-		no_with_veto: string;
-	};
-	submit_time: string;
 	deposit_end_time: string;
+	final_tally_result: {
+		yes_count: string;
+		abstain_count: string;
+		no_count: string;
+		no_with_veto_count: string;
+	};
+	id: string;
+	// content: {
+	// 	"@type": string;
+	// 	title: string;
+	// 	description: string;
+	// } & Record<string, any>;
+	messages: [];
+	metadata: string;
+	proposer: string;
+	status: ProposalStatus;
+	submit_time: string;
+	summary: string;
+	title: string;
 	total_deposit: [
 		{
 			denom: string;
 			amount: string;
-		}
+		},
 	];
 	voting_start_time: string;
 	voting_end_time: string;
@@ -52,7 +54,7 @@ export interface ProposalResult46 {
 		{
 			denom: string;
 			amount: string;
-		}
+		},
 	];
 	voting_start_time: string;
 	voting_end_time: string;
@@ -138,7 +140,7 @@ export const useProposals = (status: Proposal.Status) => {
 				proposals = response.data?.proposals?.map((prop) => {
 					return {
 						...prop,
-						proposal_id: prop.id,
+						id: prop.id,
 						content: prop.messages.length
 							? prop.messages[0]["@type"] === "/cosmos.gov.v1.MsgExecLegacyContent"
 								? prop.messages[0].content
@@ -164,7 +166,7 @@ export const useProposals = (status: Proposal.Status) => {
 				return proposals as ProposalResult[];
 			} else {
 				const response = await axios.get<{ proposals: ProposalResult[] }>(
-					"/cosmos/gov/v1beta1/proposals",
+					"/cosmos/gov/v1/proposals",
 					{
 						baseURL: lcdURL,
 						params: {
@@ -240,7 +242,7 @@ export const useProposal = (id: number) => {
 
 				return {
 					...prop,
-					proposal_id: prop.id,
+					id: prop.id,
 					content: prop.messages.length
 						? prop.messages[0]["@type"] === "/cosmos.gov.v1.MsgExecLegacyContent"
 							? prop.messages[0].content
@@ -260,10 +262,10 @@ export const useProposal = (id: number) => {
 						no: prop.final_tally_result.no_count,
 						no_with_veto: prop.final_tally_result.no_with_veto_count,
 					},
-				} as ProposalResult;
+				} as unknown as ProposalResult;
 			} else {
 				const response = await axios.get<{ proposal: ProposalResult }>(
-					`/cosmos/gov/v1beta1/proposals/${id}`,
+					`/cosmos/gov/v1/proposals/${id}`,
 					{
 						baseURL: lcdURL,
 					}
@@ -339,7 +341,7 @@ export const useGetVoteOptionItem = () => {
 };
 
 /* helpers */
-export const useParseProposalType = (content?: ProposalResult["content"]) => {
-	const type = content?.["@type"];
-	return type ? sentenceCase(last(type.split(".")) ?? "") : "Unknown proposal";
-};
+// export const useParseProposalType = (content?: ProposalResult["content"]) => {
+// 	const type = content?.["@type"];
+// 	return type ? sentenceCase(last(type.split(".")) ?? "") : "Unknown proposal";
+// };

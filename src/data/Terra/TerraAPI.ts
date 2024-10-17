@@ -131,7 +131,7 @@ export const useTerraValidator = (address: ValAddress) => {
 };
 
 export const useTerraProposal = (id: number) => {
-	return useTerraAPI<TerraProposalItem[]>(`proposals/${id}`);
+	return useTerraAPI<TerraProposalItem[]>(`cosmos/gov/v1/proposals/${id}`);
 };
 
 /* helpers */

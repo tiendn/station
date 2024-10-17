@@ -14,7 +14,7 @@ export interface TerraValidator extends Validator.Data {
 
 interface Vote {
 	options: Option[];
-	proposal_id: string;
+	id: string;
 	title: string;
 }
 
