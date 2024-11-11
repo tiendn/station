@@ -1,0 +1,13 @@
+diff --git a/modules/walletconnect/modal.js b/modules/walletconnect/modal.js
+index 05b96e6d8222b5ef724b4f55b64ab53d09eeb947..314bba4c7401e30e8855e8375d8d5a61d0aff152 100644
+--- a/modules/walletconnect/modal.js
++++ b/modules/walletconnect/modal.js
+@@ -14,7 +14,7 @@ export class TerraWalletconnectQrcodeModal {
+             const modalContainer = document.createElement('div');
+             const stylecontainer = document.createElement('style');
+             const query = encodeURIComponent(`action=wallet_connect&payload=${encodeURIComponent(uri)}`);
+-            const schemeUri = `https://terrastation.page.link/?link=https://terra.money?${query}&apn=money.terra.station&ibi=money.terra.station&isi=1548434735`;
++            const schemeUri = `https://terrastation.page.link/?link=https://luncdash.com?${query}&apn=com.luncdash.wallet&ibi=com.luncdash.wallet&isi=1728483654`;
+             const element = createModalElement({
+                 schemeUri,
+                 onClose: () => {

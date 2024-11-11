@@ -1,0 +1,102 @@
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  bottom: -100vh;
+  transition: bottom 200ms ease-in-out;
+}
+
+.ReactModal__Content--after-open {
+  bottom: 0;
+}
+
+.ReactModal__Content--before-close {
+  bottom: -100vh;
+}
+
+/* tooltip:default */
+.tippy-box {
+  background-color: var(--text);
+  border-radius: 4px;
+  color: var(--card-bg);
+  font-size: var(--font-size-small);
+
+  .tippy-content {
+    padding: 8px 16px;
+  }
+
+  ul {
+    list-style: initial;
+    padding-left: 12px;
+  }
+}
+
+.tippy-box[data-placement^="top"] > .tippy-arrow::before {
+  border-top-color: var(--text);
+}
+
+.tippy-box[data-placement^="bottom"] > .tippy-arrow::before {
+  border-bottom-color: var(--text);
+}
+
+.tippy-box[data-placement^="left"] > .tippy-arrow::before {
+  border-left-color: var(--text);
+}
+
+.tippy-box[data-placement^="right"] > .tippy-arrow::before {
+  border-right-color: var(--text);
+}
+
+/* tooltip:theme */
+.tippy-box[data-theme~="none"] {
+  background-color: var(--card-bg);
+  border: var(--border-width) solid var(--card-border);
+  box-shadow: 0 5px 20px 0 hsl(0 0% 0% / 0.15);
+  color: var(--text);
+  overflow: hidden;
+
+  .tippy-content {
+    padding: 0;
+  }
+}
+
+.tippy-box[data-theme~="popover"] {
+  border-radius: var(--border-radius);
+
+  .tippy-content {
+    padding: 24px;
+  }
+}
+
+.Toastify {
+  .Toastify__toast-container {
+    --toastify-color-success: hsl(168 71% 39%);
+    --toastify-color-error: hsl(356 100% 67%);
+
+    width: calc(100vw - 40px);
+    margin: 20px 20px 0;
+
+    .Toastify__toast {
+      border-radius: 8px;
+      .Toastify__close-button {
+        padding: 8px;
+        opacity: 1;
+        align-self: center;
+      }
+    }
+  }
+}

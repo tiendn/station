@@ -1,0 +1,24 @@
+@import "../../styles/mixins";
+
+.moniker {
+  @include truncate;
+  color: var(--text);
+  font-weight: var(--bold);
+  max-width: 12rem;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: var(--bold);
+  text-transform: uppercase;
+}
+
+.tooltip {
+  white-space: nowrap;
+}
+
+.dlGap {
+  margin-top: 8px;
+  color: var(--text);
+}

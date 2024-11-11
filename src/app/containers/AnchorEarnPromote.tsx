@@ -1,0 +1,28 @@
+import { PropsWithChildren } from "react"
+import { useTranslation } from "react-i18next"
+import { readPercent } from "terra-classic-utils";
+import { useAnchorAPY } from "data/external/anchor";
+import { Card } from "components/layout";
+import AnchorEarnLogo from "styles/images/AnchorEarn/AnchorEarnLogo";
+import styles from "./AnchorEarnPromote.module.scss";
+
+const AnchorEarnPromote = ({ children }: PropsWithChildren<{}>) => {
+	const { t } = useTranslation();
+	const { data: apy, ...state } = useAnchorAPY();
+
+	return (
+		<Card {...state} title={<AnchorEarnLogo />} className={styles.card}>
+			{apy && (
+				<header className={styles.header}>
+					{t("APY")} <strong>{readPercent(apy)}</strong>
+				</header>
+			)}
+
+			<p>{t("Anchor is a savings protocol that offers stable yields on USTC deposits")}</p>
+
+			{children && <footer className={styles.footer}>{children}</footer>}
+		</Card>
+	);
+};
+
+export default AnchorEarnPromote

@@ -1,0 +1,232 @@
+@import "../../styles/mixins";
+
+.overlay {
+  @include flex;
+  background: hsl(0 0% 0% / 0.8);
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1050;
+
+  &.select,
+  &.bottom,
+  &.loading,
+  &.txResult,
+  &.bottomConfirm {
+    @include flex(center, flex-end);
+    background: hsl(0 0% 0% / 0.8);
+  }
+}
+
+.modal {
+  display: grid;
+  gap: 32px;
+
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  outline: 0;
+  position: relative;
+  overflow: hidden;
+
+  @include desktop {
+    padding: 40px;
+    width: var(--modal-width);
+  }
+
+  @include mobile {
+    padding: 48px 20px;
+    width: calc(100% - 40px);
+  }
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  padding: 16px;
+}
+
+.action {
+  @include flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  width: 64px;
+  height: 64px;
+}
+
+.header {
+  text-align: center;
+}
+
+.icon {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.confirm {
+  font-size: inherit;
+}
+
+.main {
+  overflow: hidden; // Sub components declare their own max-height and overflow-y
+  @include mobile {
+    overflow: auto;
+  }
+}
+
+.footer {
+  margin-top: 8px;
+}
+
+.tx {
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  .header {
+    @include flex-column(flex-end);
+  }
+}
+
+.txResult {
+  width: 100%;
+  .modal {
+    border-radius: 12px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  .header {
+    @include flex-column;
+  }
+}
+
+.full,
+.fullCard {
+  gap: 0;
+  grid-template-rows: var(--header-height) auto;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  background: var(--bg);
+  .header {
+    padding: 18px 25px;
+    background: var(--card-bg);
+    border-bottom: var(--border-width) solid var(--card-border);
+  }
+  .title {
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .main {
+    padding: 20px;
+    background: var(--bg);
+  }
+
+  .close {
+    left: 0;
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.fullCard {
+  .main {
+    background: var(--card-bg);
+  }
+}
+
+.bottom {
+  gap: 0;
+  padding: 0;
+  width: 100%;
+  .modal {
+    padding: 20px 0px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    .header {
+      display: none;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 28px;
+    }
+    .main {
+      display: grid;
+      gap: 16px;
+      padding: 0;
+      background: var(--card-bg);
+    }
+    .close {
+      display: none;
+    }
+  }
+}
+
+.bottomConfirm {
+  gap: 0;
+  padding: 0;
+  width: 100%;
+  .modal {
+    padding: 20px 20px 40px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    .header {
+      display: none;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 28px;
+    }
+    .main {
+      display: grid;
+      gap: 16px;
+      padding: 0;
+      background: var(--card-bg);
+    }
+    .close {
+      display: none;
+    }
+  }
+}
+
+.select {
+  padding: 0;
+  .modal {
+    margin-bottom: 40px;
+    padding: 8px 0px;
+    border-radius: 12px;
+    .header {
+      display: none;
+    }
+    .main {
+      * {
+        font-size: 16px;
+      }
+    }
+    .close {
+      display: none;
+    }
+  }
+}
