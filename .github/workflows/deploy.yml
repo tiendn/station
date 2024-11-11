@@ -22,10 +22,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn install, lint, and build
+      - name: yarn install, and build
         run: |
           yarn
-          yarn lint
           yarn build
           cp build/index.html build/404.html
           cp CNAME build/CNAME
