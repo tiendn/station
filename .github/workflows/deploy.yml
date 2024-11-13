@@ -23,14 +23,14 @@ jobs:
         run: |
           yarn
           yarn build
-          cp dist/index.html dist/404.html
-          cp CNAME dist/CNAME
+          cp build/index.html build/404.html
+          cp CNAME build/CNAME
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: dist/
+          path: build/
 
   deploy:
     needs: build_test
@@ -43,10 +43,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
-          path: dist
+          path: build
 
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./dist
+          publish_dir: ./build
