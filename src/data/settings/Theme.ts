@@ -69,20 +69,23 @@ export const useThemeState = () => {
 
 /* validate */
 export const validateTheme = (staked: string, theme?: Theme) => {
-  const item = themes.find((item) => item.name === theme?.name)
-  if (!item) return false
-  return new BigNumber(staked).gte(item.unlock)
-}
+	const item = themes.find((item) => item.name === theme?.name);
+	if (!item) return false;
+	return new BigNumber(staked.toString()).gte(item.unlock);
+};
 
 export const useValidateTheme = () => {
-  const networkName = useNetworkName()
-  const address = useAddress()
-  const { data: delegations } = useDelegations()
-  if (debug.theme || networkName !== "mainnet") return always(true)
-  if (!address || !delegations) return always(true)
-  const staked = calcDelegationsTotal(delegations)
-  return (theme: Theme) => validateTheme(staked, theme)
-}
+	const networkName = useNetworkName();
+	const address = useAddress();
+	const { data: delegations } = useDelegations();
+	if (debug.theme || networkName !== "mainnet") return always(true);
+	if (!address || !delegations) return always(true);
+
+	// We have only one theme, so it doesn't need check more with staked balance
+	return always(true);
+	// const staked = calcDelegationsTotal(delegations);
+	// return (theme: Theme) => validateTheme(staked, theme);
+};
 
 /* favicon */
 const setFavicon = (href: string) => {
