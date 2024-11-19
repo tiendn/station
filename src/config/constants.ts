@@ -2,7 +2,7 @@
 export const LAZY_LIMIT = 999
 
 /* connection */
-export const BRIDGE = "https://walletconnect.terra.dev"
+export const BRIDGE = "https://walletconnect.luncdash.com"
 
 /* api */
 export const ASSETS = "https://assets.luncdash.com";
