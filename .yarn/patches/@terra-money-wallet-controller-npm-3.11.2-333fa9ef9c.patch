@@ -1,5 +1,161 @@
+diff --git a/_commonjs/controller.js b/_commonjs/controller.js
+index 5a43d57cb39ead8f763f35f5e34a26beb60568a7..56d00b14da6a5926cafe2611d61b97789fadc172 100644
+--- a/_commonjs/controller.js
++++ b/_commonjs/controller.js
+@@ -28,12 +28,12 @@ const CONNECTIONS = {
+     [wallet_types_1.ConnectType.READONLY]: {
+         type: wallet_types_1.ConnectType.READONLY,
+         name: 'View an address',
+-        icon: 'https://assets.terra.money/icon/wallet-provider/readonly.svg',
++        icon: 'https://assets.luncdash.com/icon/wallet-provider/readonly.svg',
+     },
+     [wallet_types_1.ConnectType.WALLETCONNECT]: {
+         type: wallet_types_1.ConnectType.WALLETCONNECT,
+         name: 'Wallet Connect',
+-        icon: 'https://assets.terra.money/icon/wallet-provider/walletconnect.svg',
++        icon: 'https://assets.luncdash.com/icon/wallet-provider/walletconnect.svg',
+     },
+ };
+ const DEFAULT_WAITING_CHROME_EXTENSION_INSTALL_CHECK = 1000 * 3;
+diff --git a/_commonjs/getChainOptions.js b/_commonjs/getChainOptions.js
+index 378dbbc540c005f6edf606256c4261d95985cccf..8ffed0c680cac35b32cd5f0450f3d2324880284e 100644
+--- a/_commonjs/getChainOptions.js
++++ b/_commonjs/getChainOptions.js
+@@ -24,7 +24,7 @@ const FALLBACK = {
+ };
+ let cache;
+ async function getChainOptions() {
+-    return fetch('https://assets.terra.money/chains.json')
++    return fetch('https://assets.luncdash.com/chains.json')
+         .then((res) => res.json())
+         .then((data) => {
+         const chains = Object.values(data);
+diff --git a/_commonjs/modules/extension-router/multiChannel.js b/_commonjs/modules/extension-router/multiChannel.js
+index 6b84d71eb9c8d6033fe7770cf3e352198eecd0ab..437fd1d078f1d1c568d714cf6e022f22c0c69b47 100644
+--- a/_commonjs/modules/extension-router/multiChannel.js
++++ b/_commonjs/modules/extension-router/multiChannel.js
+@@ -9,7 +9,7 @@ function getTerraExtensions() {
+                 {
+                     name: 'Terra Station',
+                     identifier: 'station',
+-                    icon: 'https://assets.terra.money/icon/wallet-provider/station.svg',
++                    icon: 'https://assets.luncdash.com/icon/wallet-provider/station.svg',
+                 },
+             ]
+             : [];
+diff --git a/_commonjs/modules/walletconnect/modal.js b/_commonjs/modules/walletconnect/modal.js
+index d833de8b1d551c8091d74b5617d1df2b21876194..47ad94359dd1e059e4d9cc4e0a31ee06e55895b3 100644
+--- a/_commonjs/modules/walletconnect/modal.js
++++ b/_commonjs/modules/walletconnect/modal.js
+@@ -17,7 +17,7 @@ class TerraWalletconnectQrcodeModal {
+             const modalContainer = document.createElement('div');
+             const stylecontainer = document.createElement('style');
+             const query = encodeURIComponent(`action=wallet_connect&payload=${encodeURIComponent(uri)}`);
+-            const schemeUri = `https://terrastation.page.link/?link=https://terra.money?${query}&apn=money.terra.station&ibi=money.terra.station&isi=1548434735`;
++            const schemeUri = `https://terrastation.page.link/?link=https://terra.money?${query}&apn=com.luncdash.wallet&ibi=com.luncdash.wallet&isi=1728483654`;
+             const element = createModalElement({
+                 schemeUri,
+                 onClose: () => {
+@@ -78,7 +78,7 @@ function createModalElement({ schemeUri, onClose, }) {
+     const title = document.createElement('h1');
+     content.appendChild(title);
+     const img = document.createElement('img');
+-    img.setAttribute('src', 'https://assets.terra.money/icon/wallet-provider/walletconnect.svg');
++    img.setAttribute('src', 'https://assets.luncdash.com/icon/wallet-provider/walletconnect.svg');
+     img.setAttribute('style', 'width: 1em; margin-right: 10px; transform: scale(1.5) translateY(0.08em)');
+     const span = document.createElement('span');
+     span.textContent = 'Wallet Connect';
+@@ -93,7 +93,7 @@ function createModalElement({ schemeUri, onClose, }) {
+         // button
+         const button = document.createElement('button');
+         button.addEventListener('click', openTerraStationMobile);
+-        button.textContent = 'Open Terra Station Mobile';
++        button.textContent = 'Open LuncDash Mobile';
+         content.appendChild(button);
+     }
+     else {
+diff --git a/_commonjs/modules/walletconnect/modal.style.js b/_commonjs/modules/walletconnect/modal.style.js
+index 08ed0cf7731f6817fbf1d859535e6593ce1dfb10..3f7acb6d6b4c840b6bed9b0a8327e5ceb88490ea 100644
+--- a/_commonjs/modules/walletconnect/modal.style.js
++++ b/_commonjs/modules/walletconnect/modal.style.js
+@@ -99,7 +99,7 @@ exports.modalStyle = `
+   font-weight: bold;
+   
+   color: #ffffff;
+-  background-color: #2043b5;
++  background-color: #fc9803;
+ }
+ 
+ .wallet-wc-modal > .wallet-wc-modal--content[data-device="desktop"] {
+diff --git a/_commonjs/operators/getExtensions.js b/_commonjs/operators/getExtensions.js
+index b687ab11b40a037bceb39985cc6b53eedf0fcd32..0979142ede15cc1f97d9b759cbd8be8dd384603b 100644
+--- a/_commonjs/operators/getExtensions.js
++++ b/_commonjs/operators/getExtensions.js
+@@ -10,7 +10,7 @@ const FALLBACK = {
+         {
+             name: 'Terra Station',
+             identifier: 'station',
+-            icon: 'https://assets.terra.money/icon/station-extension/icon.png',
++            icon: 'https://assets.luncdash.com/icon/station-extension/icon.png',
+             urls: [
+                 {
+                     browser: 'chrome',
+@@ -40,7 +40,7 @@ function getExtensions() {
+     if (!currentBrowser) {
+         return (0, rxjs_1.of)([]);
+     }
+-    return (0, fetch_1.fromFetch)('https://assets.terra.money/extensions.json').pipe((0, rxjs_1.switchMap)((res) => {
++    return (0, fetch_1.fromFetch)('https://assets.luncdash.com/extensions.json').pipe((0, rxjs_1.switchMap)((res) => {
+         if (res.ok) {
+             return res.json();
+         }
+diff --git a/controller.js b/controller.js
+index 5ec209c8b7858aa37f9f6d01ee94e006cb3d8c7d..9aabd18043925b91761d508b2f1af156170b4fe7 100644
+--- a/controller.js
++++ b/controller.js
+@@ -22,12 +22,12 @@ const CONNECTIONS = {
+     [ConnectType.READONLY]: {
+         type: ConnectType.READONLY,
+         name: 'View an address',
+-        icon: 'https://assets.terra.money/icon/wallet-provider/readonly.svg',
++        icon: 'https://assets.luncdash.com/icon/wallet-provider/readonly.svg',
+     },
+     [ConnectType.WALLETCONNECT]: {
+         type: ConnectType.WALLETCONNECT,
+         name: 'Wallet Connect',
+-        icon: 'https://assets.terra.money/icon/wallet-provider/walletconnect.svg',
++        icon: 'https://assets.luncdash.com/icon/wallet-provider/walletconnect.svg',
+     },
+ };
+ const DEFAULT_WAITING_CHROME_EXTENSION_INSTALL_CHECK = 1000 * 3;
+diff --git a/getChainOptions.js b/getChainOptions.js
+index 2709111517a76378d5cca1f729dcc9b8451824bb..4af6dd1cb9c12db0e6da316db154ed6f540e9248 100644
+--- a/getChainOptions.js
++++ b/getChainOptions.js
+@@ -21,7 +21,7 @@ const FALLBACK = {
+ };
+ let cache;
+ export async function getChainOptions() {
+-    return fetch('https://assets.terra.money/chains.json')
++    return fetch('https://assets.luncdash.com/chains.json')
+         .then((res) => res.json())
+         .then((data) => {
+         const chains = Object.values(data);
+diff --git a/modules/extension-router/multiChannel.js b/modules/extension-router/multiChannel.js
+index 558a3f0657bc45e28d1ac036ab5992f9be47ff12..139285dd284c0a25b3728765ccca827b4560a0f6 100644
+--- a/modules/extension-router/multiChannel.js
++++ b/modules/extension-router/multiChannel.js
+@@ -6,7 +6,7 @@ export function getTerraExtensions() {
+                 {
+                     name: 'Terra Station',
+                     identifier: 'station',
+-                    icon: 'https://assets.terra.money/icon/wallet-provider/station.svg',
++                    icon: 'https://assets.luncdash.com/icon/wallet-provider/station.svg',
+                 },
+             ]
+             : [];
 diff --git a/modules/walletconnect/modal.js b/modules/walletconnect/modal.js
-index 05b96e6d8222b5ef724b4f55b64ab53d09eeb947..314bba4c7401e30e8855e8375d8d5a61d0aff152 100644
+index 05b96e6d8222b5ef724b4f55b64ab53d09eeb947..2842f93108c74e146131ff0322ed745f2f8b6590 100644
 --- a/modules/walletconnect/modal.js
 +++ b/modules/walletconnect/modal.js
 @@ -14,7 +14,7 @@ export class TerraWalletconnectQrcodeModal {
@@ -7,7 +163,47 @@ index 05b96e6d8222b5ef724b4f55b64ab53d09eeb947..314bba4c7401e30e8855e8375d8d5a61
              const stylecontainer = document.createElement('style');
              const query = encodeURIComponent(`action=wallet_connect&payload=${encodeURIComponent(uri)}`);
 -            const schemeUri = `https://terrastation.page.link/?link=https://terra.money?${query}&apn=money.terra.station&ibi=money.terra.station&isi=1548434735`;
-+            const schemeUri = `https://terrastation.page.link/?link=https://luncdash.com?${query}&apn=com.luncdash.wallet&ibi=com.luncdash.wallet&isi=1728483654`;
++            const schemeUri = `https://terrastation.page.link/?link=https://terra.money?${query}&apn=com.luncdash.wallet&ibi=com.luncdash.wallet&isi=1728483654`;
              const element = createModalElement({
                  schemeUri,
                  onClose: () => {
+@@ -74,7 +74,7 @@ function createModalElement({ schemeUri, onClose, }) {
+     const title = document.createElement('h1');
+     content.appendChild(title);
+     const img = document.createElement('img');
+-    img.setAttribute('src', 'https://assets.terra.money/icon/wallet-provider/walletconnect.svg');
++    img.setAttribute('src', 'https://assets.luncdash.com/icon/wallet-provider/walletconnect.svg');
+     img.setAttribute('style', 'width: 1em; margin-right: 10px; transform: scale(1.5) translateY(0.08em)');
+     const span = document.createElement('span');
+     span.textContent = 'Wallet Connect';
+@@ -89,7 +89,7 @@ function createModalElement({ schemeUri, onClose, }) {
+         // button
+         const button = document.createElement('button');
+         button.addEventListener('click', openTerraStationMobile);
+-        button.textContent = 'Open Terra Station Mobile';
++        button.textContent = 'Open LuncDash Mobile';
+         content.appendChild(button);
+     }
+     else {
+diff --git a/operators/getExtensions.js b/operators/getExtensions.js
+index ae3e5fdb05f65a2eebc25e00511f0cdd9e094c49..714f0f7ec9b8bcac918d261ac24e999522dcc5d0 100644
+--- a/operators/getExtensions.js
++++ b/operators/getExtensions.js
+@@ -7,7 +7,7 @@ const FALLBACK = {
+         {
+             name: 'Terra Station',
+             identifier: 'station',
+-            icon: 'https://assets.terra.money/icon/station-extension/icon.png',
++            icon: 'https://assets.luncdash.com/icon/station-extension/icon.png',
+             urls: [
+                 {
+                     browser: 'chrome',
+@@ -37,7 +37,7 @@ export function getExtensions() {
+     if (!currentBrowser) {
+         return of([]);
+     }
+-    return fromFetch('https://assets.terra.money/extensions.json').pipe(switchMap((res) => {
++    return fromFetch('https://assets.luncdash.com/extensions.json').pipe(switchMap((res) => {
+         if (res.ok) {
+             return res.json();
+         }
