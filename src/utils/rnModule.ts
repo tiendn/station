@@ -189,7 +189,7 @@ export const WebViewMessage = async <T extends RN_API>(
 		// }, TIMEOUT)
 
 		const listener = (event: any) => {
-			if (event?.data.includes("setImmediate$0")) return;
+			if (event?.data?.includes?.("setImmediate$0")) return;
 
 			if (event?.data) {
 				const { data: listenerData, reqId: listenerReqId } = JSON.parse(event.data);

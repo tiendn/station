@@ -48,7 +48,7 @@ const App = () => {
 
 	const RNListener = useCallback(() => {
 		const listener = async (event: any) => {
-			if (event?.data.includes("setImmediate$0")) return;
+			if (event?.data?.includes?.("setImmediate$0")) return;
 
 			const { data, type } = JSON.parse(event?.data);
 			switch (type) {
@@ -120,10 +120,7 @@ const App = () => {
 						// wallet connect
 						const linkUrl = parseDynamicLinkURL(data);
 
-						if (linkUrl) {
-							const action = linkUrl?.searchParams.get("action");
-							const payload = linkUrl?.searchParams.get("payload");
-
+						const navigateConnect = async (action: string, payload: string) => {
 							if (action === "walletconnect_connect") {
 								const valid = await validWalletConnectPayload(payload as string);
 								if (valid.success) {
@@ -146,6 +143,18 @@ const App = () => {
 									},
 								});
 							}
+						};
+
+						if (linkUrl) {
+							const action = linkUrl?.searchParams.get("action");
+							const payload = linkUrl?.searchParams.get("payload");
+							return navigateConnect(action, payload);
+						} else {
+							const url = new URL(decodeURIComponent(data));
+							const action = url.hostname; // Extracts 'deeplink://path' from the path
+							const payload = url.searchParams.get("payload");
+							// const decodedPayload = decodeURIComponent(payload || "");
+							return navigateConnect(action, payload);
 						}
 					}
 
