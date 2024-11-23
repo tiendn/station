@@ -41,17 +41,17 @@ const ConnectForm = ({ action, payload }: Props) => {
   const readyConnect = async () => {
     try {
       connectionTimeout.current = setTimeout(() => {
-        navigate("/wallet", { replace: true })
-        toast.error("Session timeout", { toastId: "session-timeout" })
-      }, 15000)
+			navigate("/wallet", { replace: true });
+			toast.error("Session timeout", { toastId: "session-timeout" });
+		}, 15000);
 
-      const res = await WebViewMessage(RN_APIS.READY_CONNECT_WALLET, {
-        uri: decodeURIComponent(payload),
-      })
+		const res = await WebViewMessage(RN_APIS.READY_CONNECT_WALLET, {
+			uri: decodeURIComponent(payload),
+		});
 
-      clearTimeout(connectionTimeout.current)
+			clearTimeout(connectionTimeout.current);
 
-      setPeerData(res)
+			setPeerData(res);
     } catch (error) {
       console.error("readyConnect", error)
     }

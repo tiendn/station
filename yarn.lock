@@ -3326,7 +3326,7 @@ __metadata:
 
 "@terra-money/wallet-controller@patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch::locator=lunc-dash-web%40workspace%3A.":
   version: 3.11.2
-  resolution: "@terra-money/wallet-controller@patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch::version=3.11.2&hash=a50ab2&locator=lunc-dash-web%40workspace%3A."
+  resolution: "@terra-money/wallet-controller@patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch::version=3.11.2&hash=a0dfb3&locator=lunc-dash-web%40workspace%3A."
   dependencies:
     "@terra-money/wallet-types": ^3.11.2
     "@terra-money/web-extension-interface": ^3.11.2
@@ -3344,7 +3344,7 @@ __metadata:
     ws: ^7.5.5
   peerDependencies:
     "@terra-money/terra.js": ^3.1.6
-  checksum: dec207354e597d624e8342f878413ef7d3ead6e61ee2cd8af35b567fe749d7adcbd62a39fb1f5ac24fc21ad55261da1c930b623be858f4d4194c3dc990153c73
+  checksum: 7b8e5bb4e82337e9b9f205d4cb4795a4fc191f856026b3d591358e180a5de6d0af40cc75c6a8c225647d518e4b4cef93ff9b5935987b170cd1fb702e6359b6ce
   languageName: node
   linkType: hard
 
