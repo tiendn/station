@@ -76,19 +76,6 @@ index d833de8b1d551c8091d74b5617d1df2b21876194..cb6875037184123398cf619bf8eeb1d5
          content.appendChild(button);
      }
      else {
-diff --git a/_commonjs/modules/walletconnect/modal.style.js b/_commonjs/modules/walletconnect/modal.style.js
-index 08ed0cf7731f6817fbf1d859535e6593ce1dfb10..3f7acb6d6b4c840b6bed9b0a8327e5ceb88490ea 100644
---- a/_commonjs/modules/walletconnect/modal.style.js
-+++ b/_commonjs/modules/walletconnect/modal.style.js
-@@ -99,7 +99,7 @@ exports.modalStyle = `
-   font-weight: bold;
-   
-   color: #ffffff;
--  background-color: #2043b5;
-+  background-color: #fc9803;
- }
- 
- .wallet-wc-modal > .wallet-wc-modal--content[data-device="desktop"] {
 diff --git a/_commonjs/operators/getExtensions.js b/_commonjs/operators/getExtensions.js
 index b687ab11b40a037bceb39985cc6b53eedf0fcd32..0979142ede15cc1f97d9b759cbd8be8dd384603b 100644
 --- a/_commonjs/operators/getExtensions.js
