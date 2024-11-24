@@ -9,7 +9,7 @@ const Aside = () => {
 			<Links />
 			<LastHeight />
 			<p style={{ fontSize: 11, color: "hsl(240 9% 66%)", opacity: 0.75 }}>
-				Commit {process.env.REACT_APP_VERSION}
+				Version: {process.env.REACT_APP_VERSION}
 			</p>
 		</Grid>
   );
