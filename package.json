@@ -72,8 +72,8 @@
 		"xss": "^1.0.15"
 	},
 	"scripts": {
-		"start": "HTTPS=false craco start",
-		"build": "craco build",
+		"start": "REACT_APP_VERSION=$(git rev-parse --short HEAD) && HTTPS=false craco start",
+		"build": "REACT_APP_VERSION=$(git rev-parse --short HEAD) && craco build",
 		"test": "craco test",
 		"analyze": "source-map-explorer 'build/static/js/*.js'"
 	},
