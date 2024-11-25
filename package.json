@@ -73,7 +73,7 @@
 	},
 	"scripts": {
 		"start": "REACT_APP_VERSION=$(date +%Y-%m-%d) && HTTPS=false craco start",
-		"build": "REACT_APP_VERSION=$(date +%Y-%m-%d) && craco build",
+		"build": "REACT_APP_VERSION=$(date +%Y-%m-%d) && echo 'Applying patches...' && patch-package && craco build",
 		"test": "craco test",
 		"analyze": "source-map-explorer 'build/static/js/*.js'",
 		"postinstall": "patch-package"
