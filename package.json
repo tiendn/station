@@ -29,7 +29,7 @@
 		"@terra-money/terra.js": "^3.1.10",
 		"@terra-money/terra.proto": "3.1.0-alpha.1",
 		"@terra-money/use-wallet": "^3.9.1",
-		"@terra-money/wallet-controller": "patch:@terra-money/wallet-controller@npm%3A3.11.2#./.yarn/patches/@terra-money-wallet-controller-npm-3.11.2-333fa9ef9c.patch",
+		"@terra-money/wallet-controller": "^3.11.2",
 		"@terra-money/wallet-provider": "^3.11.0",
 		"@terra-money/wallet-types": "^3.9.1",
 		"@testing-library/jest-dom": "^5.17.0",
