@@ -15,7 +15,7 @@
 	"license": "MIT",
 	"cracoConfig": "craco.config.js",
 	"engines": {
-		"node": "18.x"
+		"node": "22.x"
 	},
 	"dependencies": {
 		"@anchor-protocol/anchor.js": "^5.1.1",
@@ -73,10 +73,9 @@
 	},
 	"scripts": {
 		"start": "REACT_APP_VERSION=$(date +%Y-%m-%d) && HTTPS=false craco start",
-		"build": "REACT_APP_VERSION=$(date +%Y-%m-%d) && echo 'Applying patches...' && patch-package && craco build",
+		"build": "REACT_APP_VERSION=$(date +%Y-%m-%d) && craco build",
 		"test": "craco test",
-		"analyze": "source-map-explorer 'build/static/js/*.js'",
-		"postinstall": "patch-package"
+		"analyze": "source-map-explorer 'build/static/js/*.js'"
 	},
 	"resolutions": {
 		"react-error-overlay": "6.0.11",
