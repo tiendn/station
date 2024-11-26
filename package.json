@@ -123,5 +123,6 @@
 		"stream-browserify": "^3.0.0",
 		"typescript": "^5.6.2",
 		"vm-browserify": "^1.1.2"
-	}
+	},
+	"packageManager": "yarn@4.5.3"
 }

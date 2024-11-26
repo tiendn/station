@@ -2,6 +2,8 @@ name: CI/CD for Luncdash
 
 on:
   push:
+    branches:
+      - main
     tags: 
       - 'v*'
 
@@ -21,7 +23,7 @@ jobs:
 
       - name: yarn install, and build
         run: |
-          yarn
+          yarn --immutable
           yarn build
           cp build/index.html build/404.html
           cp CNAME build/CNAME
