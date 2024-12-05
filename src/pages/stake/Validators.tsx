@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import VerifiedIcon from "@mui/icons-material/Verified"
 import { readPercent } from "terra-classic-utils";
 import { Validator } from "@terra-money/terra.js";
-/* FIXME(terra.js): Import from terra.js */
+
 import { BondStatus } from "@terra-money/terra.proto/cosmos/staking/v1beta1/staking";
 import { bondStatusFromJSON } from "@terra-money/terra.proto/cosmos/staking/v1beta1/staking";
 import { combineState, useIsClassic } from "data/query";
@@ -29,9 +29,11 @@ const Validators = () => {
 	const isClassic = useIsClassic();
 
 	const { data: validators, ...validatorsState } = useValidators();
+	console.log("validators", validators);
 	const { data: delegations, ...delegationsState } = useDelegations();
 	const { data: undelegations, ...undelegationsState } = useUnbondings();
 	const { data: TerraValidators, ...TerraValidatorsState } = useTerraValidators();
+	console.log("TerraValidators", TerraValidators);
 
 	const state = combineState(
 		validatorsState,

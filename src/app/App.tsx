@@ -237,8 +237,7 @@ const App = () => {
 							<>
 								<Refresh />
 								<Preferences />
-								{/* Use only moon theme */}
-								{/* <SelectTheme /> */}
+								<SelectTheme />
 							</>
 						)}
 					</section>

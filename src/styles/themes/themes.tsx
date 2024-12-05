@@ -6,15 +6,15 @@ import { toAmount } from "terra-classic-utils";
 // import AnimationDark from "./Dark/Broadcasting.png"
 // import AnimationBlossom from "./Blossom/Broadcasting.png"
 import AnimationMoon from "./Moon/Broadcasting.png"
-// import AnimationWhale from "./Whale/Broadcasting.png"
+// import AnimationWhale from "./Whale/Broadcasting.png";
 // import AnimationMadness from "./Madness/Broadcasting.png"
 
 /* favicon */
 // import FaviconLight from "./Light/favicon.svg"
 // import FaviconDark from "./Dark/favicon.svg"
 // import FaviconBlossom from "./Blossom/favicon.svg"
-import FaviconMoon from "./Moon/favicon.svg"
-// import FaviconWhale from "./Whale/favicon.svg"
+import FaviconMoon from "./Moon/favicon.svg";
+// import FaviconWhale from "./Whale/favicon.svg";
 // import FaviconMadness from "./Madness/favicon.svg"
 
 /* preview */
@@ -22,15 +22,15 @@ import FaviconMoon from "./Moon/favicon.svg"
 // import { ReactComponent as PreviewDark } from "./Dark/preview.svg"
 // import { ReactComponent as PreviewBlossom } from "./Blossom/preview.svg"
 import { ReactComponent as PreviewMoon } from "./Moon/preview.svg"
-// import { ReactComponent as PreviewWhale } from "./Whale/preview.svg"
+import { ReactComponent as PreviewWhale } from "./Whale/preview.svg";
 // import { ReactComponent as PreviewMadness } from "./Madness/preview.svg"
 
 export interface Theme {
-  name: string
-  unlock: Amount
-  animation: string
-  favicon: string
-  preview: ReactNode
+	name: string;
+	unlock: Amount;
+	animation: string;
+	favicon: string;
+	preview: ReactNode;
 }
 
 export const themes: Theme[] = [
@@ -62,13 +62,13 @@ export const themes: Theme[] = [
 		favicon: FaviconMoon,
 		preview: <PreviewMoon />,
 	},
-	// {
-	//   name: "whale",
-	//   unlock: toAmount("100"),
-	//   animation: AnimationWhale,
-	//   favicon: FaviconWhale,
-	//   preview: <PreviewWhale />,
-	// },
+	{
+		name: "whale",
+		unlock: toAmount("100"),
+		animation: AnimationMoon,
+		favicon: FaviconMoon,
+		preview: <PreviewWhale />,
+	},
 	// {
 	//   name: "madness",
 	//   unlock: toAmount("1000"),

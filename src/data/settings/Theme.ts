@@ -82,9 +82,9 @@ export const useValidateTheme = () => {
 	if (!address || !delegations) return always(true);
 
 	// We have only one theme, so it doesn't need check more with staked balance
-	return always(true);
-	// const staked = calcDelegationsTotal(delegations);
-	// return (theme: Theme) => validateTheme(staked, theme);
+	// return always(true);
+	const staked = calcDelegationsTotal(delegations);
+	return (theme: Theme) => validateTheme(staked, theme);
 };
 
 /* favicon */

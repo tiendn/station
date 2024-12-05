@@ -146,9 +146,15 @@ export const getAvailableStakeActions = (destination: ValAddress, delegations: D
 
 /* delegation */
 export const calcDelegationsTotal = (delegations: Delegation[]) => {
-	return delegations.length
-		? BigNumber.sum(...delegations.map(({ balance }) => balance.amount.toString())).toString()
-		: "0";
+	try {
+		return delegations.length
+			? BigNumber.sum(
+					...delegations.map(({ balance }) => balance.amount.toString())
+				).toString()
+			: "0";
+	} catch (error) {
+		return "0";
+	}
 };
 
 /* unbonding */
