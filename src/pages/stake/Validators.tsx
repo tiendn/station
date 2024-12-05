@@ -29,11 +29,9 @@ const Validators = () => {
 	const isClassic = useIsClassic();
 
 	const { data: validators, ...validatorsState } = useValidators();
-	console.log("validators", validators);
 	const { data: delegations, ...delegationsState } = useDelegations();
 	const { data: undelegations, ...undelegationsState } = useUnbondings();
 	const { data: TerraValidators, ...TerraValidatorsState } = useTerraValidators();
-	console.log("TerraValidators", TerraValidators);
 
 	const state = combineState(
 		validatorsState,
