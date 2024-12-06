@@ -56,14 +56,14 @@ export const themes: Theme[] = [
 	//   preview: <PreviewBlossom />,
 	// },
 	{
-		name: "moon",
+		name: "luncdash",
 		unlock: toAmount("10"),
 		animation: AnimationMoon,
 		favicon: FaviconMoon,
 		preview: <PreviewMoon />,
 	},
 	{
-		name: "whale",
+		name: "light",
 		unlock: toAmount("100"),
 		animation: AnimationMoon,
 		favicon: FaviconMoon,
