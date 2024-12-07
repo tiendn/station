@@ -67,7 +67,8 @@ export const useTokenInfoCW721 = (contract: AccAddress, token_id: string) => {
 			const data = await lcd.wasm.contractQuery<NFTTokenItem>(contract, {
 				nft_info: { token_id },
 			});
-
+			if (data.extension.image) return data;
+			// If not existed image in extension attributes, fetch ipfs token_uri json
 			const { token_uri } = data;
 			const uri = getIpfsGateway(token_uri);
 			if (!token_uri || !uri) return data;
