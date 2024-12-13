@@ -15,6 +15,7 @@ import { ReactComponent as StakeIcon } from "styles/images/menu/Stake.svg"
 
 import is from "auth/scripts/is"
 import QRScan from "./QRScan"
+import { isIOS } from "utils/device";
 
 const cx = classNamesBind.bind(styles)
 
@@ -30,22 +31,23 @@ const Nav = () => {
   const [buttonView, setButtonView] = useState(true)
   const [isNeedMoreBtn, setIsNeedMoreBtn] = useState(false)
 
-  useEffect(() => {
-    const mainButtons = ["/wallet", "/swap", "/stake"]
-    const subMenu = subPage.find((a) => a.path === pathname)
-    const isMain = mainButtons.find((a) => a === pathname)
-    if (isMain) {
-      setIsNeedMoreBtn(false)
-    } else {
-      setIsNeedMoreBtn(true)
-    }
 
-    if (subMenu) {
-      setButtonView(false)
-    } else {
-      setButtonView(true)
-    }
-  }, [pathname, subPage])
+  useEffect(() => {
+		const mainButtons = ["/wallet", "/swap", "/stake"];
+		const subMenu = subPage.find((a) => a.path === pathname);
+		const isMain = mainButtons.find((a) => a === pathname);
+		if (isMain) {
+			setIsNeedMoreBtn(false);
+		} else {
+			setIsNeedMoreBtn(true);
+		}
+
+		if (subMenu) {
+			setButtonView(false);
+		} else {
+			setButtonView(true);
+		}
+  }, [pathname, subPage]);
 
   return buttonView ? (
 		<nav>
@@ -67,18 +69,20 @@ const Nav = () => {
 					</>
 				</NavLink>
 
-				<NavLink
-					to="/swap"
-					onClick={close}
-					className={({ isActive }) =>
-						cx(styles.mobileItem, { active: isActive && !isOpen })
-					}
-				>
-					<>
-						<SwapIcon {...ICON_SIZE} />
-						{t("SWAP")}
-					</>
-				</NavLink>
+				{!isIOS && (
+					<NavLink
+						to="/swap"
+						onClick={close}
+						className={({ isActive }) =>
+							cx(styles.mobileItem, { active: isActive && !isOpen })
+						}
+					>
+						<>
+							<SwapIcon {...ICON_SIZE} />
+							{t("SWAP")}
+						</>
+					</NavLink>
+				)}
 
 				<NavLink
 					to="/stake"

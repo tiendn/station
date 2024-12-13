@@ -65,149 +65,186 @@ import DonateAllVestingTokensTx from "txs/stake/DonateAllVestingTokensTx"
 /* Deep Link */
 import SelectSend from "txs/send/SelectSend"
 import WalletSettings from "../auth/modules/manage/WalletSettings"
+import { isIOS } from "utils/device";
 
 const ICON_SIZE = { width: 20, height: 20 }
 
+
 export const useNav = () => {
-  const { t } = useTranslation()
+	const { t } = useTranslation();
 
-  const menu = [
-    {
-      path: "/wallet",
-      element: <Wallet />,
-      title: t("Wallet"),
-      icon: <WalletIcon {...ICON_SIZE} />,
-    },
-    {
-      path: "/history",
-      element: <History />,
-      title: t("History"),
-      icon: <HistoryIcon {...ICON_SIZE} />,
-    },
-    {
-      path: "/swap",
-      element: <SwapTx />,
-      title: t("Swap"),
-      icon: <SwapIcon {...ICON_SIZE} />,
-    },
-    {
-      path: "/stake",
-      element: <Stake />,
-      title: t("Stake"),
-      icon: <StakeIcon {...ICON_SIZE} />,
-    },
-    {
-      path: "/gov",
-      element: <Governance />,
-      title: t("Governance"),
-      icon: <GovernanceIcon {...ICON_SIZE} />,
-    },
-    {
-      path: "/nft",
-      element: <NFT />,
-      title: t("NFT"),
-      icon: <NFTIcon {...ICON_SIZE} />,
-    },
-    {
-      path: "/contract",
-      element: <Contract />,
-      title: t("Contract"),
-      icon: <ContractIcon {...ICON_SIZE} />,
-    },
-  ]
+	const menuIOS = [
+		{
+			path: "/wallet",
+			element: <Wallet />,
+			title: t("Wallet"),
+			icon: <WalletIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/history",
+			element: <History />,
+			title: t("History"),
+			icon: <HistoryIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/stake",
+			element: <Stake />,
+			title: t("Stake"),
+			icon: <StakeIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/gov",
+			element: <Governance />,
+			title: t("Governance"),
+			icon: <GovernanceIcon {...ICON_SIZE} />,
+		},
 
-  const subPage = [
-    {
-      path: "/send/select",
-      title: "Select a coin to send",
-      element: <SelectSend />,
-    },
-    {
-      path: "/confirm",
-      title: "Confirm",
-      element: <ConfirmTx />,
-    },
-    {
-      path: "/connect",
-      title: "",
-      element: <ConnectTx />,
-    },
-  ]
+		{
+			path: "/contract",
+			element: <Contract />,
+			title: t("Contract"),
+			icon: <ContractIcon {...ICON_SIZE} />,
+		},
+	];
 
-  const routes = [
-    { path: "/", element: <Dashboard /> },
+	const menuAll = [
+		{
+			path: "/wallet",
+			element: <Wallet />,
+			title: t("Wallet"),
+			icon: <WalletIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/history",
+			element: <History />,
+			title: t("History"),
+			icon: <HistoryIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/swap",
+			element: <SwapTx />,
+			title: t("Swap"),
+			icon: <SwapIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/stake",
+			element: <Stake />,
+			title: t("Stake"),
+			icon: <StakeIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/gov",
+			element: <Governance />,
+			title: t("Governance"),
+			icon: <GovernanceIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/nft",
+			element: <NFT />,
+			title: t("NFT"),
+			icon: <NFTIcon {...ICON_SIZE} />,
+		},
+		{
+			path: "/contract",
+			element: <Contract />,
+			title: t("Contract"),
+			icon: <ContractIcon {...ICON_SIZE} />,
+		},
+	];
+	const menu = isIOS ? menuIOS : menuAll;
 
-    /* pages */
-    ...menu,
-    { path: "/validator/:address", element: <ValidatorDetails /> },
-    { path: "/proposal/:id", element: <ProposalDetails /> },
+	const subPage = [
+		{
+			path: "/send/select",
+			title: "Select a coin to send",
+			element: <SelectSend />,
+		},
+		{
+			path: "/confirm",
+			title: "Confirm",
+			element: <ConfirmTx />,
+		},
+		{
+			path: "/connect",
+			title: "",
+			element: <ConnectTx />,
+		},
+	];
 
-    /* multisig */
-    { path: "/multisig/sign", element: <SignMultisigTxPage /> },
-    { path: "/multisig/post", element: <PostMultisigTxPage /> },
+	const routes = [
+		{ path: "/", element: <Dashboard /> },
 
-    /* txs */
-    { path: "/send", element: <SendTx /> },
-    { path: "/confirm", element: <ConfirmTx /> },
-    { path: "/nft/transfer", element: <TransferCW721Tx /> },
-    { path: "/swap/multiple", element: <SwapMultipleTx /> },
-    { path: "/stake/:address", element: <StakeTx /> },
-    { path: "/rewards", element: <WithdrawRewardsTx /> },
-    { path: "/commission", element: <WithdrawCommissionTx /> },
-    { path: "/proposal/new", element: <SubmitProposalTx /> },
-    { path: "/proposal/:id/deposit", element: <DepositTx /> },
-    { path: "/proposal/:id/vote", element: <VoteTx /> },
-    { path: "/contract/instantiate", element: <InstantiateContractTx /> },
-    { path: "/contract/store", element: <StoreCodeTx /> },
-    { path: "/contract/execute/:contract", element: <ExecuteContractTx /> },
-    { path: "/contract/migrate/:contract", element: <MigrateContractTx /> },
-    {
-      path: "/contract/updateadmin/:contract",
-      element: <UpdateAdminContractTx />,
-    },
-    { path: "/earn", element: <AnchorEarnTx /> },
-    { path: "/donate", element: <DonateAllVestingTokensTx /> },
+		/* pages */
+		...menu,
+		{ path: "/validator/:address", element: <ValidatorDetails /> },
+		{ path: "/proposal/:id", element: <ProposalDetails /> },
 
-    /* auth */
-    { path: "/auth/*", element: <Auth /> },
-    { path: "/networks", element: <ManageNetworksPage /> },
-    { path: "/network/new", element: <AddNetworkPage /> },
-    { path: "/settings", element: <Settings /> },
+		/* multisig */
+		{ path: "/multisig/sign", element: <SignMultisigTxPage /> },
+		{ path: "/multisig/post", element: <PostMultisigTxPage /> },
 
-    /* Deep Link */
-    ...subPage,
+		/* txs */
+		{ path: "/send", element: <SendTx /> },
+		{ path: "/confirm", element: <ConfirmTx /> },
+		{ path: "/nft/transfer", element: <TransferCW721Tx /> },
+		{ path: "/swap/multiple", element: <SwapMultipleTx /> },
+		{ path: "/stake/:address", element: <StakeTx /> },
+		{ path: "/rewards", element: <WithdrawRewardsTx /> },
+		{ path: "/commission", element: <WithdrawCommissionTx /> },
+		{ path: "/proposal/new", element: <SubmitProposalTx /> },
+		{ path: "/proposal/:id/deposit", element: <DepositTx /> },
+		{ path: "/proposal/:id/vote", element: <VoteTx /> },
+		{ path: "/contract/instantiate", element: <InstantiateContractTx /> },
+		{ path: "/contract/store", element: <StoreCodeTx /> },
+		{ path: "/contract/execute/:contract", element: <ExecuteContractTx /> },
+		{ path: "/contract/migrate/:contract", element: <MigrateContractTx /> },
+		{
+			path: "/contract/updateadmin/:contract",
+			element: <UpdateAdminContractTx />,
+		},
+		{ path: "/earn", element: <AnchorEarnTx /> },
+		{ path: "/donate", element: <DonateAllVestingTokensTx /> },
 
-    /* Mobile preference */
-    {
-      path: "/preference",
-      element: <WalletSettings />,
-    },
+		/* auth */
+		{ path: "/auth/*", element: <Auth /> },
+		{ path: "/networks", element: <ManageNetworksPage /> },
+		{ path: "/network/new", element: <AddNetworkPage /> },
+		{ path: "/settings", element: <Settings /> },
 
-    /* dev */
-    { path: "/labs", element: <Labs /> },
+		/* Deep Link */
+		...subPage,
 
-    /* 404 */
-    { path: "*", element: <NotFound /> },
-  ]
+		/* Mobile preference */
+		{
+			path: "/preference",
+			element: <WalletSettings />,
+		},
 
-  const mobileMenu = [
-    {
-      path: "/",
-      element: <Dashboard />,
-      title: t("Dashboard"),
-      icon: <DashboardIcon {...ICON_SIZE} />,
-    },
-    ...menu,
-    {
-      path: "/preference",
-      element: <WalletSettings />,
-      title: t("Settings"),
-      icon: <SettingsIcon {...ICON_SIZE} />,
-    },
-  ]
+		/* dev */
+		{ path: "/labs", element: <Labs /> },
 
-  return { menu, mobileMenu, subPage, element: useRoutes(routes) }
-}
+		/* 404 */
+		{ path: "*", element: <NotFound /> },
+	];
+
+	const mobileMenu = [
+		{
+			path: "/",
+			element: <Dashboard />,
+			title: t("Dashboard"),
+			icon: <DashboardIcon {...ICON_SIZE} />,
+		},
+		...menu,
+		{
+			path: "/preference",
+			element: <WalletSettings />,
+			title: t("Settings"),
+			icon: <SettingsIcon {...ICON_SIZE} />,
+		},
+	];
+
+	return { menu, mobileMenu, subPage, element: useRoutes(routes) };
+};
 
 /* helpers */
 export const useGoBackOnError = ({ error }: QueryState) => {
