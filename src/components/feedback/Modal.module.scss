@@ -46,7 +46,7 @@
 
 .close {
   position: absolute;
-  top: 0;
+  top: 33px;
   right: 0;
   font-size: 20px;
   padding: 16px;
@@ -141,6 +141,7 @@
   }
 
   .close {
+    top: 0;
     left: 0;
     width: 64px;
     height: 64px;
