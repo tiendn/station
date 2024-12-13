@@ -24,6 +24,7 @@ import { ListGroup } from "components/display"
 import { useBuyList } from "./Buy"
 import { Props } from "./Asset"
 import is from "auth/scripts/is"
+import { isIOS } from "utils/device";
 
 const AssetActions = ({ token, symbol, balance }: Props) => {
   const { t } = useTranslation()
@@ -80,7 +81,7 @@ const AssetActions = ({ token, symbol, balance }: Props) => {
 				{t("Send")}
 			</InternalLink>
 
-			{networkName !== "testnet" && (
+			{networkName !== "testnet" && !isIOS && (
 				<InternalLink
 					icon={<RestartAltIcon style={{ fontSize: 18 }} />}
 					to="/swap"

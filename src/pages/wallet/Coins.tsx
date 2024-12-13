@@ -20,6 +20,7 @@ import Asset from "./Asset"
 import { useBuyList } from "./Buy"
 import SelectMinimumValue from "./SelectMinimumValue"
 import { ModalButton, Mode } from "../../components/feedback"
+import { isIOS } from "utils/device";
 
 const Coins = () => {
   const { t } = useTranslation()
@@ -82,14 +83,15 @@ const Coins = () => {
   );
 
   return (
-    <Card
-      {...state}
-      title={t("Coins")}
-      extra={isWallet.mobile() ? extraMobile : extra}
-    >
-      <Grid gap={32}>{render()}</Grid>
-    </Card>
-  )
+		<Card
+			{...state}
+			title={t("Coins")}
+			// extra={isWallet.mobile() ? extraMobile : extra}
+			extra={isIOS ? extraMobile : isWallet.mobile() ? extraMobile : extra}
+		>
+			<Grid gap={32}>{render()}</Grid>
+		</Card>
+  );
 }
 
 export default Coins
