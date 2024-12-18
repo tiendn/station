@@ -20,25 +20,25 @@ const Upload = ({ value, onUpload }: Props) => {
   }
 
   return (
-    <>
-      <input type="file" id="file" onChange={handleChange} hidden />
+		<>
+			<input type="file" id="file" accept=".wasm,.txt" onChange={handleChange} hidden />
 
-      <label className={styles.label} htmlFor="file">
-        {value?.name ?? (
-          <>
-            <CloudUploadIcon fontSize="small" />
-            {t("Upload a wasm file")}
-          </>
-        )}
-      </label>
+			<label className={styles.label} htmlFor="file">
+				{value?.name ?? (
+					<>
+						<CloudUploadIcon fontSize="small" />
+						{t("Upload a wasm file")}
+					</>
+				)}
+			</label>
 
-      {value && (
-        <footer className={styles.footer}>
-          <strong>{t("Size")}:</strong> {numeral(value.size).format("0b")}
-        </footer>
-      )}
-    </>
-  )
+			{value && (
+				<footer className={styles.footer}>
+					<strong>{t("Size")}:</strong> {numeral(value.size).format("0b")}
+				</footer>
+			)}
+		</>
+  );
 }
 
 export default Upload
