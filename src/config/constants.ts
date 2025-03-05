@@ -10,7 +10,7 @@ export const OBSERVER = "wss://observer.terra.dev";
 
 /* website */
 export const STATION = "https://mobile.wallet.luncdash.com";
-export const FINDER = "https://terrascope.info"
+export const FINDER = "https://finder.luncdash.com";
 // export const EXTENSION =
 //   "https://chrome.google.com/webstore/detail/aiifbnbfobpmeekipheeijimdpnlpgpp"
 export const TUTORIAL =
